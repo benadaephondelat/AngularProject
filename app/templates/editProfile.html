@@ -9,5 +9,16 @@
     <input ng-model="editData.gender" ng-value="2" type="radio" id="femaleGender" name="gender" value="Female">
     <label for="otherGender">Other</label>
     <input ng-model="editData.gender" ng-value="0" type="radio" id="otherGender" name="gender" value="Other">
+
+    <img id="profilePicturePreview" src="{{editData.profileImageData}}" style="height: 50px"/>
+    <span id="pictureName"></span>
+    <input type="file" id="profilePicture" ng-click="uploadProfilePicture()" ng-model="editData.profileImageData"/>
+    <span>Size limit: UNLIMITED</span>
+
+    <img id="coverPicturePreview" src="{{editData.coverImageData}}" style="height: 50px"/>
+    <span id="coverPictureName"></span>
+    <input type="file" id="coverPicture" ng-click="uploadCoverPicture()" ng-model="editData.coverImageData"/>
+    <span>Size limit: UNLIMITED</span>
+
     <input type="submit" id="editProfileButton" value="Edit Profile">
 </form>
