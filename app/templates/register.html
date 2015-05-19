@@ -1,0 +1,20 @@
+<form ng-controller="LoginRegisterController" ng-submit="registerUser()">
+    <label for="username">Username:</label>
+        <input ng-model="registerData.username" type="text" id="username" placeholder="username">
+    <label for="password">Password:</label>
+        <input ng-model="registerData.password" type="password" id="password">
+    <label for="passwordRepeat">Repeat password:</label>
+        <input ng-model="registerData.confirmPassword" type="password" id="passwordRepeat">
+    <label for="name">Full name:</label>
+        <input ng-model="registerData.name" type="text" id="name">
+    <label for="email">Email:</label>
+        <input ng-model="registerData.email" type="text" id="email">
+    <label for="maleGender">Male</label>
+        <input ng-model="registerData.gender" type="radio" id="maleGender" name="gender" value="Male">
+    <label for="femaleGender">Female</label>
+        <input ng-model="registerData.gender" type="radio" id="femaleGender" name="gender" value="Female">
+    <label for="otherGender">Other</label>
+        <input ng-model="registerData.gender" type="radio" id="otherGender" name="gender" value="Other">
+    <input type="submit" id="registerButton" value="Register">
+    <button id="cancelButton">Cancel</button>
+</form>

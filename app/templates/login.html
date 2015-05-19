@@ -1,0 +1,8 @@
+<form ng-controller="LoginRegisterController" ng-submit="loginUser()">
+    <label for="username">Username:</label>
+        <input ng-model="loginData.username" type="text" id="username" placeholder="username">
+    <label for="password">Password:</label>
+        <input ng-model="loginData.password"  type="password" id="password">
+    <input type="submit" value="Login" id="loginButton">
+    <button id="cancelButton">Cancel</button>
+</form>
