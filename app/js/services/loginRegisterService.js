@@ -31,8 +31,11 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
         $http.defaults.headers.common = GetHeaders();
         $http.post(serviceUrl + "logout")
             .success(function (data) {
+                console.log(data);
+                sessionStorage.clear();
                 defer.resolve(data);
             }).error(function (error) {
+                console.log(error);
                 defer.reject(error);
             });
         return defer.promise;

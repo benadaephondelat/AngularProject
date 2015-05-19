@@ -14,5 +14,9 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/changePassword.html',
             controller: 'EditProfileController'
         })
-        .otherwise({redirectTo: '/login'})
+        .when('/home', {
+            templateUrl: 'templates/home.html',
+            controller: 'HomePageController'
+        })
+        .otherwise({redirectTo: '/home'})
 });

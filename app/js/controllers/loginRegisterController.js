@@ -15,4 +15,17 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
             });
         $location.path('/home');
     };
+
+    $scope.logoutUser = function() {
+        loginRegisterServices.Logout()
+            .then(function(data) {
+                console.log(data);
+                sessionStorage.clear();
+                $location.path('#/home');
+            }, function(error) {
+                console.log(error);
+            });
+        $location.path('/home');
+    };
+
 });
