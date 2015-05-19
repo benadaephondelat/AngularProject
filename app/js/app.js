@@ -18,6 +18,10 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/editProfile.html',
             controller: 'EditProfileController'
         })
+        .when('/friends', {
+            templateUrl: 'templates/friends.html',
+            controller: 'FriendsController'
+        })
         .when('/home', {
             templateUrl: 'templates/home.html',
             controller: 'HomePageController'
