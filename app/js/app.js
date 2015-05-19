@@ -14,6 +14,10 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/changePassword.html',
             controller: 'EditProfileController'
         })
+        .when('/editProfile', {
+            templateUrl: 'templates/editProfile.html',
+            controller: 'EditProfileController'
+        })
         .when('/home', {
             templateUrl: 'templates/home.html',
             controller: 'HomePageController'
