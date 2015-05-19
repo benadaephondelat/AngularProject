@@ -1,6 +1,6 @@
 <div ng-init="loadFriends()" ng-controller="FriendsController">
     <span> Friends ({{myFriends.length}} total)</span>
-    <input type="search" id="searchFriends" ng-model="input" ng-keyup="searchFriends()">
+    <input type="search" id="searchFriends" ng-model="input" ng-keyup="loadFriends()">
     <ul>
         <li ng-repeat="friend in myFriends | filter:input">
             <img ng-src="{{friend.profileImageData}}">

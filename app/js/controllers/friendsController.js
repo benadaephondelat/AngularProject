@@ -9,14 +9,4 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
             })
     };
 
-    $scope.searchFriends = function() {
-        friendsService.getFriends()
-            .then(function(data) {
-
-            }, function (error) {
-                console.log(error);
-            })
-
-    };
-
 });
