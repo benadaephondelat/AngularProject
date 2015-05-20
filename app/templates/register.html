@@ -1,19 +1,57 @@
-<form ng-controller="LoginRegisterController" ng-submit="registerUser()" id="registerForm">
-    <label for="username">Username:</label>
-        <input ng-model="registerData.username" type="text" id="username" placeholder="username">
-    <label for="password">Password:</label>
-        <input ng-model="registerData.password" type="password" id="password">
-    <label for="passwordRepeat">Repeat password:</label>
-        <input ng-model="registerData.confirmPassword" type="password" id="passwordRepeat">
-    <label for="name">Full name:</label>
-        <input ng-model="registerData.name" type="text" id="name">
-    <label for="email">Email:</label>
-        <input ng-model="registerData.email" type="text" id="email">
-    <label for="maleGender">Male</label>
-        <input ng-model="registerData.gender" type="radio" id="maleGender" name="gender" value="Male">
-    <label for="femaleGender">Female</label>
-        <input ng-model="registerData.gender" type="radio" id="femaleGender" name="gender" value="Female">
-    <label for="otherGender">Other</label>
-        <input ng-model="registerData.gender" type="radio" id="otherGender" name="gender" value="Other">
-    <input type="submit" id="registerButton" value="Register">
+<form class="register form-horizontal col-md-6 col-md-offset-3 white" id="registerForm" name="registerForm" ng-controller="LoginRegisterController" ng-submit="registerUser()">
+    <fieldset>
+        <legend><h1>Register</h1></legend>
+        <div class="col-lg-12 form-info">
+            <div class="form-group">
+                <label for="username" class="col-lg-4 control-label">Username</label>
+                <div class="col-lg-7">
+                    <input type="text" ng-model="registerData.username" class="form-control" id="username" placeholder="Username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-lg-4 control-label">Password</label>
+                <div class="col-lg-7">
+                    <input type="password" ng-model="registerData.password" class="form-control" id="password" ng-minlength="6" ng-maxlength="100" placeholder="Password" tooltip="Enter password between 6 and 100 symbols"  tooltip-trigger="focus" tooltip-placement="top" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordRepeat" class="col-lg-4 control-label">Confirm password</label>
+                <div class="col-lg-7">
+                    <input type="password" ng-model="registerData.confirmPassword" class="form-control" id="passwordRepeat" ng-minlength="6" ng-maxlength="100" placeholder="Confirm password" compare-to="registerData.password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reg-name" class="col-lg-4 control-label">Name</label>
+                <div class="col-lg-7">
+                    <input type="text" ng-model="registerData.name" class="form-control" id="reg-name" placeholder="Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reg-email" class="col-lg-4 control-label">Email</label>
+                <div class="col-lg-7">
+                    <input type="email" ng-model="registerData.email" class="form-control" id="reg-email" placeholder="example@yahoo.com" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-4 control-label">Gender</label>
+                <div class="col-lg-7">
+                    <label class="radio-inline" for="male">Male</label>
+                    <input ng-model="registerData.gender" id="male" type="radio" name="gender" value="Male" required>
+
+                    <label class="radio-inline" for="female">Female</label>
+                    <input ng-model="registerData.gender" type="radio" id="female" name="gender" value="Female" required>
+
+                    <label class="radio-inline" for="other">Other</label>
+                    <input ng-model="registerData.gender" type="radio" id="other" name="gender" value="Other" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group center">
+            <input type="submit" id="registerButton" class="btn btn-lg btn-warning" value="Register">
+            <span>or</span>
+            <a href="#/login/" class="btn btn-lg btn-warning">Login</a>
+        </div>
+    </fieldset>
 </form>
+
