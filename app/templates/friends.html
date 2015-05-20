@@ -1,10 +1,15 @@
-<div ng-init="loadFriends()" ng-controller="FriendsController">
-    <span> Friends ({{myFriends.length}} total)</span>
-    <input type="search" id="searchFriends" ng-model="input" ng-keyup="loadFriends()">
-    <ul>
-        <li ng-repeat="friend in myFriends | filter:input">
-            <img default-picture ng-src="{{friend.profileImageData}}">
-            <span>{{friend.name}}</span>
-        </li>
-    </ul>
-</div>
+<main ng-init="loadFriends()" ng-controller="FriendsController">
+    <div class="white">
+        <legend><h2>Friends ({{myFriends.length}} total)</h2></legend>
+        <div class="form-group col-sm-11">
+            <label for="searchFriends" class="col-sm-4 control-label">Search by name</label>
+            <div class="col-sm-6">
+                <input type="search" id="searchFriends" ng-model="input" ng-keyup="loadFriends()">
+            </div>
+        </div>
+        <ul ng-repeat="friend in myFriends | filter:input" class="media-list">
+            <img default-picture ng-src="{{friend.profileImageData}}" alt="profile picture" style="width: 150px; height: 150px"/>
+            <a ng-click="redirectToUsersPage(friend.username)"><span>{{friend.name}}</span></a>
+        </ul>
+    </div>
+</main>
