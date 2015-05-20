@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <title>FuckBook</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 </head>
 <body ng-app="FuckBook">
-<div ng-view></div>
-
+<div class="container">
+    <div ng-view></div>
+</div>
 <!--libraries-->
 <script type="application/javascript" src="lib/jquery-2.1.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="application/javascript" src="lib/angular/angular.js"></script>
 <script type="application/javascript" src="lib/angular/angular-route.js"></script>
 <script type="application/javascript" src="lib/angular/angular-resource.js"></script>
+<script type="text/javascript" src="lib/ng-infinite-scroll.js"></script>
 <!--end of libraries-->
 
 <!--js-->
@@ -20,10 +25,17 @@
 <script src="js/services/loginRegisterService.js"></script>
 <script src="js/services/editProfileService.js"></script>
 <script src="js/services/friendsService.js"></script>
+<script src="js/services/postService.js"></script>
 <script src="js/controllers/loginRegisterController.js"></script>
 <script src="js/controllers/editProfileController.js"></script>
 <script src="js/controllers/homePageController.js"></script>
 <script src="js/controllers/friendsController.js"></script>
+<script src="js/controllers/postController.js"></script>
+<script src="js/directives/friendsBar.js"></script>
+<script src="js/directives/defaultPicture.js"></script>
+<script src="js/directives/searchBar.js"></script>
+<script src="js/directives/userWall.js"></script>
+<script src="js/filters/filters.js"></script>
 <!--end of js-->
 
 </body>

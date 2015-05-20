@@ -1,0 +1,11 @@
+<div ng-controller="FriendsController">
+    <div ng-init="getUserWall()">
+    <img errsrc ng-src="{{searchedUser.coverImageData}}"/>
+        <p>{{searchedUser.username}}</p>
+        <img ng-src="{{searchedUser.profileImageData}}" alt=""/>
+        <p>{{searchedUser.name}}</p>
+        <p>{{searchedUser.gender | genderFilter}}</p>
+        <div ng-show="searchedUser.isFriend ==  false && searchedUser.isFriend==false">Add Friend</div>
+        <div ng-show="searchedUser.isFriend ==  false && searchedUser.isFriend==true">Friend Request is pending</div>
+    </div>
+</div>

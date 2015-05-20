@@ -1,15 +1,14 @@
 <form ng-controller="EditProfileController" ng-init="getUserData()" ng-submit="editProfile()">
     <label for="name">Full name:</label>
-    <input ng-model="editData.name" type="text" placeholder={{name}} id="name">
+        <input ng-model="editData.name" type="text" placeholder={{name}} id="name">
     <label for="email">Email:</label>
-    <input ng-model="editData.email" type="text" placeholder={{email}} id="email">
+        <input ng-model="editData.email" type="text" placeholder={{email}} id="email">
     <label for="maleGender">Male</label>
-    <input ng-model="editData.gender" ng-value="1" type="radio" id="maleGender" name="gender" value="Male">
+        <input ng-model="editData.gender" ng-value="1" type="radio" id="maleGender" name="gender" value="Male">
     <label for="femaleGender">Female</label>
-    <input ng-model="editData.gender" ng-value="2" type="radio" id="femaleGender" name="gender" value="Female">
+        <input ng-model="editData.gender" ng-value="2" type="radio" id="femaleGender" name="gender" value="Female">
     <label for="otherGender">Other</label>
-    <input ng-model="editData.gender" ng-value="0" type="radio" id="otherGender" name="gender" value="Other">
-
+        <input ng-model="editData.gender" ng-value="0" type="radio" id="otherGender" name="gender" value="Other">
     <img id="profilePicturePreview" src="{{editData.profileImageData}}" style="height: 50px"/>
     <span id="pictureName"></span>
     <input type="file" id="profilePicture" ng-click="uploadProfilePicture()" ng-model="editData.profileImageData"/>

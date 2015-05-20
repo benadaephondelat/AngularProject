@@ -1,4 +1,4 @@
-var FuckBook = angular.module('FuckBook', ['ngRoute']);
+var FuckBook = angular.module('FuckBook', ['ngRoute', 'customFilters', 'infinite-scroll']);
 
 FuckBook.config(function ($routeProvider) {
     $routeProvider
@@ -26,5 +26,10 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/home.html',
             controller: 'HomePageController'
         })
-        .otherwise({redirectTo: '/home'})
+        .when('/users/:name*', {
+            controller: 'FriendsController',
+            templateUrl: function(){
+                return 'templates/userWall.html';
+        }})
+        .otherwise({redirectTo: '/'})
 });

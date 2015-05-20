@@ -3,11 +3,10 @@ FuckBook.controller("EditProfileController", function ($scope, editProfileServic
     $scope.changePassword = function () {
         editProfileService.changePassword($scope.changePasswordData)
             .then(function(data){
-                console.log(data);
+
             }, function(error) {
                 console.log(error);
             });
-        $location.path('/home');
     };
 
     $scope.getUserData = function() {
@@ -22,10 +21,10 @@ FuckBook.controller("EditProfileController", function ($scope, editProfileServic
     $scope.editProfile = function() {
         editProfileService.editProfile($scope.editData)
             .then(function (data) {
-                console.log(data);
+
             }, function (error) {
                 console.log(error);
-            })
+            });
     };
 
     $scope.uploadProfilePicture = function () {

@@ -1,4 +1,58 @@
-<div ng-controller="HomePageController">
-    <h1>Hello {{username}}</h1>
-    <button ng-click="logout()">Logout</button>
+<div ng-controller="HomePageController" ng-init="getReceivedRequests()">
+    <h1>Wellcome {{username}}</h1>
+    <div id="logout" ng-click="logout()">Logout</div>
+    <search></search>
+    <friendstable></friendstable>
+
+
+    <div id="watingRequests" ng-click="showDetails = ! showDetails">{{watingRequests.length}} pending requests </div>
+
+    <ul ng-show="showDetails" class="procedures">
+        <li ng-repeat="requestingUser in watingRequests">
+            <h4><a href="#" ></a></h4>
+            <div class="procedure-details">
+                <img ng-src="{{requestingUser.user.profileImageData}}" errsrc="$index" alt="no picture"/>
+                <p>{{requestingUser.user.name}}</p>
+                <div class="acceptFriendRequest" ng-click="acceptFriendRequest(requestingUser.id)">Accept</div>
+                <br/>
+                <div class="rejectFriendRequest" ng-click="rejectFriendRequest(requestingUser.id)">Reject</div>
+            </div>
+        </li>
+    </ul>
+
+    <div id="news-feed" ng-controller="postController">
+        <h1>News Feed</h1>
+
+        <div infinite-scroll="nextPage()" infinite-scroll-distance='0'>
+            <div ng-repeat='post in newsPosts'>
+                <h2>{{post.id}}</h2>
+
+                <h3>{{post.postContent}}</h3>
+
+                <button ng-click="showContent=!showContent">comment</button>
+                <div ng-show="showContent">
+                    <form action="" ng-submit="addCommentToPost(post.id)" ng-controller="postController">
+                        <input ng-model="commentData.content" value="" type="text">
+                        <input type="submit" value="Comment this post">
+                    </form>
+                </div>
+                <button ng-click="getCommentByPostId(post.id)">show comments</button>
+                <div>
+                    <div ng-repeat='comment in comments'>
+                        <p>{{comment.author.name}}</p>
+                        <h4>{{comment.commentContent}}</h4>
+                    </div>
+                </div>
+                <!--<button ng-hide="showEditPost" ng-click="showEditPost=!showEditPost">edit post</button>-->
+                <!--<div ng-show="showEditPost">-->
+                <!--<form action="" ng-submit="editPostById(post.id)" ng-controller="homeController">-->
+                <!--<input ng-model="$scope.contentToChange.postContent" value="" type="text">-->
+                <!--<input type="submit" value="Edit post">-->
+                <!--</form>-->
+                <!--</div>-->
+            </div>
+        </div>
+
 </div>
+
+

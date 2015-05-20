@@ -3,7 +3,7 @@
     <input type="search" id="searchFriends" ng-model="input" ng-keyup="loadFriends()">
     <ul>
         <li ng-repeat="friend in myFriends | filter:input">
-            <img ng-src="{{friend.profileImageData}}">
+            <img default-picture ng-src="{{friend.profileImageData}}">
             <span>{{friend.name}}</span>
         </li>
     </ul>

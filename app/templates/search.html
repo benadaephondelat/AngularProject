@@ -1,0 +1,9 @@
+<div ng-controller="FriendsController">
+    <input ng-model="search.searchTerm" ng-keyup="search()" type="search"/>
+    <ul id="findedPeopole">
+        <li ng-repeat="user in findedUsers">
+            <div class="foundedUser" ng-click="redirectToUsersPage(user.username)"> {{user.name}}</div>
+            <img class="searchedProfilePic" errsrc ng-src="{{user.profileImageData}}" alt=""/>
+        </li>
+    </ul>
+</div>

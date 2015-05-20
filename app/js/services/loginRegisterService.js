@@ -14,7 +14,6 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
     };
 
     service.Login = function (loginData) {
-
         var defer = $q.defer();
         $http.post(serviceUrl + "login", loginData)
             .success(function (data) {
@@ -26,16 +25,13 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
     };
 
     service.Logout = function () {
-
         var defer = $q.defer();
         $http.defaults.headers.common = GetHeaders();
         $http.post(serviceUrl + "logout")
             .success(function (data) {
-                console.log(data);
                 sessionStorage.clear();
                 defer.resolve(data);
             }).error(function (error) {
-                console.log(error);
                 defer.reject(error);
             });
         return defer.promise;

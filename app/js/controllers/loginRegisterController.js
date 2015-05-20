@@ -19,7 +19,6 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
     $scope.logoutUser = function() {
         loginRegisterServices.Logout()
             .then(function(data) {
-                console.log(data);
                 sessionStorage.clear();
                 $location.path('#/home');
             }, function(error) {

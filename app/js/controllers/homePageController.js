@@ -1,14 +1,40 @@
-FuckBook.controller('HomePageController', function ($scope, loginRegisterServices) {
+FuckBook.controller('HomePageController', function ($scope, loginRegisterServices, friendsService) {
 
     $scope.username = sessionStorage['username'];
 
     $scope.logout = function(){
         loginRegisterServices.Logout()
             .then(function(data){
-                console.log(data);
+
             }, function(err){
                 console.log(err);
             })
-    }
+    };
 
+    $scope.getReceivedRequests = function(){
+        friendsService.getReceivedRequests()
+            .then(function (data) {
+                $scope.watingRequests = data;
+            }, function(err){
+                console.log(err);
+            })
+    };
+
+    $scope.acceptFriendRequest  = function (userId) {
+        friendsService.acceptFriendRequest(userId)
+            .then(function (data) {
+
+            }, function(err){
+                console.log(err)
+            });
+    };
+
+    $scope.rejectFriendRequest  = function (userId) {
+        friendsService.rejectFriendRequest(userId)
+            .then(function (data) {
+
+            }, function(err){
+                console.log(err)
+            });
+    }
 });
