@@ -10,3 +10,11 @@
 #registerForm {
     text-align: center;
 }
+
+#passwordChangeForm {
+    text-align: center;
+}
+
+#changePasswordButton {
+    display: block;
+}

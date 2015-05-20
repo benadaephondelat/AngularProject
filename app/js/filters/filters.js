@@ -1,13 +1,13 @@
 angular.module('customFilters', []).filter('genderFilter', function() {
     return function(input) {
         switch (input) {
-            case 0:
+            case 1:
                 return 'Male';
 
-            case 1:
+            case 2:
                 return 'Female';
 
-            case 2:
+            case 0:
                 return 'Other';
         }
     };
