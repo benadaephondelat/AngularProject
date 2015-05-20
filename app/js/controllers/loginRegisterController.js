@@ -4,27 +4,26 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
         loginRegisterServices.Login($scope.loginData)
             .then(function(data){
                 loginRegisterServices.SetCredentials(data);
+                $location.path('/home');
             });
-        $location.path('/home');
     };
 
     $scope.registerUser = function () {
         loginRegisterServices.Register($scope.registerData)
             .then(function(data){
                 loginRegisterServices.SetCredentials(data);
+                $location.path('/home');
             });
-        $location.path('/home');
     };
 
     $scope.logoutUser = function() {
         loginRegisterServices.Logout()
             .then(function(data) {
                 sessionStorage.clear();
-                $location.path('#/home');
+                $location.path('#/');
             }, function(error) {
                 console.log(error);
             });
-        $location.path('/home');
     };
 
 });
