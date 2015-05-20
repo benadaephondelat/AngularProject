@@ -1,4 +1,4 @@
-<form ng-controller="LoginRegisterController" ng-submit="registerUser()">
+<form ng-controller="LoginRegisterController" ng-submit="registerUser()" id="registerForm">
     <label for="username">Username:</label>
         <input ng-model="registerData.username" type="text" id="username" placeholder="username">
     <label for="password">Password:</label>
@@ -16,5 +16,4 @@
     <label for="otherGender">Other</label>
         <input ng-model="registerData.gender" type="radio" id="otherGender" name="gender" value="Other">
     <input type="submit" id="registerButton" value="Register">
-    <button id="cancelButton">Cancel</button>
 </form>

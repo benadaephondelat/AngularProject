@@ -22,14 +22,17 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/friends.html',
             controller: 'FriendsController'
         })
-        .when('/home', {
-            templateUrl: 'templates/home.html',
-            controller: 'HomePageController'
-        })
         .when('/users/:name*', {
             controller: 'FriendsController',
             templateUrl: function(){
                 return 'templates/userWall.html';
         }})
+        .when('/home', {
+            templateUrl: 'templates/home.html',
+            controller: 'HomePageController'
+        })
+        .when('/', {
+            templateUrl: 'templates/welcome.html'
+        })
         .otherwise({redirectTo: '/'})
 });
