@@ -1,7 +1,7 @@
 <div ng-controller="FriendsController" ng-init="showMyFriends()" >
     <a href="">Friends  total {{myFriends.length}}</a>
     <div ng-repeat="friend in myFriends">
-        <img ng-src="{{friend.profileImageData}}" errsrc alt=""/>
+        <img default-picture ng-src="{{friend.profileImageData}}" alt=""/>
         <span class="my-firends-username">{{friend.name}}</span>
     </div>
 </div>
