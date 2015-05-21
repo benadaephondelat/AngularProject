@@ -1,31 +1,16 @@
 <div ng-controller="HomePageController" ng-init="getReceivedRequests()">
-
     <navbar></navbar>
     <friendstable></friendstable>
 
-    <ul ng-show="showDetails" class="procedures">
-        <li ng-repeat="requestingUser in watingRequests">
-            <h4><a href="#" ></a></h4>
-            <div class="procedure-details">
-                <img ng-src="{{requestingUser.user.profileImageData}}" errsrc="$index" alt="no picture"/>
-                <p>{{requestingUser.user.name}}</p>
-                <div class="acceptFriendRequest" ng-click="acceptFriendRequest(requestingUser.id)">Accept</div>
-                <br/>
-                <div class="rejectFriendRequest" ng-click="rejectFriendRequest(requestingUser.id)">Reject</div>
-            </div>
-        </li>
-    </ul>
-
     <div id="news-feed" ng-controller="postController">
+
         <h1>News Feed</h1>
 
         <div infinite-scroll="nextPage()" infinite-scroll-distance='0'>
             <div ng-repeat='post in newsPosts'>
-                <h2>{{post.id}}</h2>
-
                 <h3>{{post.postContent}}</h3>
 
-                <button ng-click="showContent=!showContent">comment</button>
+                <button ng-click="showContent=!showContent">comment this post</button>
                 <div ng-show="showContent">
                     <form action="" ng-submit="addCommentToPost(post.id)" ng-controller="postController">
                         <input ng-model="commentData.content" value="" type="text">
@@ -34,8 +19,8 @@
                 </div>
                 <button ng-click="getCommentByPostId(post.id)">show comments</button>
                 <div>
-                    <div ng-repeat='comment in comments'>
-                        <p>{{comment.author.name}}</p>
+                    <div ng-repeat='comment in post.comments'>
+                        <p ng-click="showUser(comment.author.name)">{{comment.author.name}} </p>
                         <h4>{{comment.commentContent}}</h4>
                     </div>
                 </div>
@@ -48,4 +33,5 @@
                 <!--</div>-->
             </div>
         </div>
+</div>
 </div>

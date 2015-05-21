@@ -31,6 +31,7 @@ FuckBook.factory('friendsService', function ($http, $q) {
         $http.defaults.headers.common = GetHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/" + userName)
             .success(function (data) {
+                console.log(data);
                 deferred.resolve(data);
             }).error(function (error) {
                 deferred.reject(error);

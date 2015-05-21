@@ -35,4 +35,8 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/welcome.html'
         })
         .otherwise({redirectTo: '/'})
+}).run(function($location) {
+    if(!sessionStorage.getItem('accessToken')){
+        $location.path('/');
+    }
 });

@@ -20,12 +20,15 @@ FuckBook.controller('postController', function ($scope, postServices) {
         $scope.isBusy = true;
         postServices.NewsFeedPosts($scope.startPostId)
             .then(function (data) {
+                console.log(data);
                 $scope.busy = true;
                 var posts = data;
                 for (var i = 0; i < posts.length; i++) {
                     $scope.newsPosts.push(posts[i]);
                 }
-                $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
+                if($scope.newsPosts.length != 0) {
+                    $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
+                }
                 $scope.isBusy = false;
             }, function (err) {
                 console.log(err);
@@ -48,6 +51,7 @@ FuckBook.controller('postController', function ($scope, postServices) {
     $scope.getCommentByPostId = function (id) {
         postServices.GetCommentByPostId(id)
             .then(function (data) {
+                console.log(data);
                 $scope.comments = data.comments;
             }, function (err) {
                 console.log(err);
@@ -62,5 +66,16 @@ FuckBook.controller('postController', function ($scope, postServices) {
                 console.log(err);
             })
     };
+
+    $scope.showUser = function(name) {
+        postServices.SearchByName(name)
+            .then(function (data) {
+
+               console.log(data);
+            }, function (error) {
+                console.log(error);
+            })
+    };
+
 
 });

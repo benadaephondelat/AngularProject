@@ -22,7 +22,8 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
     $scope.getUserWall = function(){
         friendsService.getUserWall(sessionStorage['searchedUser'])
             .then(function(data){
-                $scope.searchedUser= data;
+                $scope.searchedUser = data;
+
             }, function (error) {
                 console.log(error);
             })

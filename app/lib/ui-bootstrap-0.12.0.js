@@ -1617,7 +1617,7 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
     restrict:'EA',
     replace: true,
     transclude: true,
-    templateUrl: 'templates/datepicker/popup.html',
+    templateUrl: 'templates/datepicker/modal.html',
     link:function (scope, element, attrs) {
       element.bind('click', function(event) {
         event.preventDefault();
@@ -2761,7 +2761,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
     restrict: 'EA',
     replace: true,
     scope: { content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: 'templates/tooltip/tooltip-popup.html'
+    templateUrl: 'templates/tooltip/tooltip-modal.html'
   };
 })
 
@@ -2774,7 +2774,7 @@ angular.module( 'ui.bootstrap.tooltip', [ 'ui.bootstrap.position', 'ui.bootstrap
     restrict: 'EA',
     replace: true,
     scope: { content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: 'templates/tooltip/tooltip-html-unsafe-popup.html'
+    templateUrl: 'templates/tooltip/tooltip-html-unsafe-modal.html'
   };
 })
 
@@ -3848,7 +3848,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.position', 'ui.bootstrap
         select:'&'
       },
       replace:true,
-      templateUrl:'templates/typeahead/typeahead-popup.html',
+      templateUrl:'templates/typeahead/typeahead-modal.html',
       link:function (scope, element, attrs) {
 
         scope.templateUrl = attrs.templateUrl;

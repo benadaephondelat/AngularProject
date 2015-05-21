@@ -59,5 +59,23 @@ FuckBook.factory('postServices', function ($http, $q) {
         return deferred.promise;
     };
 
+    service.SearchByName = function (search) {
+        var deferred = $q.defer();
+        $http.defaults.headers.common = GetHeaders();
+        $http.get("http://softuni-social-network.azurewebsites.net/api/users/search?searchTerm=" + search)
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+        return deferred.promise;
+    };
+
+    function GetHeaders() {
+        return {
+            'Authorization': 'Bearer ' + sessionStorage['accessToken']
+        };
+    }
+
     return service;
 });
