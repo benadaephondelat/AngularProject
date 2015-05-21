@@ -39,7 +39,6 @@ FuckBook.controller('postController', function ($scope, postServices) {
         console.log($scope.commentData);
         postServices.AddCommentToPost(postId, data)
             .then(function (data) {
-                console.log('yea');
                 console.log(data);
             }, function (err) {
                 console.log(err);
@@ -49,7 +48,6 @@ FuckBook.controller('postController', function ($scope, postServices) {
     $scope.getCommentByPostId = function (id) {
         postServices.GetCommentByPostId(id)
             .then(function (data) {
-                console.log('yea');
                 $scope.comments = data.comments;
             }, function (err) {
                 console.log(err);
@@ -59,7 +57,7 @@ FuckBook.controller('postController', function ($scope, postServices) {
     $scope.editPostById = function(id){
         postServices.EditPostById(id,$scope.contentToChange)
             .then(function (data) {
-                console.log('yea');
+
             }, function (err) {
                 console.log(err);
             })

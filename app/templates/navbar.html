@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <search class="form-control"></search>
+                    </div>
+                </form>
+            </div>
+            <li class="active"><a href="#/home">Home</a></li>
+            <li><a href="#/friends">Friends</a></li>
+            <li class="dropdown" ng-controller="HomePageController" ng-init="getReceivedRequests()">
+                <a class="dropdown-toggle" data-toggle="dropdown">Friend Requests {{watingRequests.length}}<b class="caret"></b></a>
+                <ul class="dropdown-menu" >
+                    <li class="divider" ></li>
+                    <li ng-repeat="requestingUser in watingRequests"><a id="friendRequests">
+                        <img default-picture ng-src="{{requestingUser.user.profileImageData}}" style="width: 50px; height: 50px"/>
+                        <a style="font-weight: bold; color: black"><p ng-controller="FriendsController" ng-click="redirectToUsersPage(requestingUser.user.name)">{{requestingUser.user.name}}</p></a>
+                        <button class="acceptFriendRequest" ng-click="acceptFriendRequest(requestingUser.id)">Accept</button>
+                        <button class="rejectFriendRequest" ng-click="rejectFriendRequest(requestingUser.id)">Reject</button>
+                    </a></li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+            <li><a href="#/editProfile">Edit Profile</a></li>
+            <li><a href="#/changePassword">Change Password</a></li>
+            <li ng-controller="LoginRegisterController"><a ng-click="logoutUser()">Logout</a></li>
+        </ul>
+    </div>
+</nav>

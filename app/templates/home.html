@@ -1,11 +1,7 @@
 <div ng-controller="HomePageController" ng-init="getReceivedRequests()">
-    <h1>Wellcome {{username}}</h1>
-    <div id="logout" ng-click="logout()">Logout</div>
-    <search></search>
+
+    <navbar></navbar>
     <friendstable></friendstable>
-
-
-    <div id="watingRequests" ng-click="showDetails = ! showDetails">{{watingRequests.length}} pending requests </div>
 
     <ul ng-show="showDetails" class="procedures">
         <li ng-repeat="requestingUser in watingRequests">

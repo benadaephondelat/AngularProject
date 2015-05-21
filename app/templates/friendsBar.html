@@ -1,7 +1,7 @@
-<div ng-controller="FriendsController" ng-init="showMyFriends()" >
-    <a href="">Friends  total {{myFriends.length}}</a>
-    <div ng-repeat="friend in myFriends">
-        <img default-picture ng-src="{{friend.profileImageData}}" alt=""/>
-        <span class="my-firends-username">{{friend.name}}</span>
+<div ng-controller="FriendsController" ng-init="showMyFriends()" id="friendsPanel" class="row">
+    <a href="#/friends">Friends  total {{myFriends.length}}</a>
+    <div class="col-xs-6 col-md-3" ng-repeat="friend in myFriends | limitTo: 6">
+        <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px" alt=""/>
+        <a><span ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
     </div>
 </div>
