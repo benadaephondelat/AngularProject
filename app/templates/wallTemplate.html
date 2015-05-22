@@ -1,5 +1,6 @@
 <div class="container" ng-controller="HomePageController" ng-init="getUserWall()">
     <div class="profile">
+        <div id="userBackgroundImage" default-picture div-back-image="{{searchedUser.coverImageData}}" ></div>
         <img align="left" class="fb-image-profile thumbnail"  default-picture ng-src="{{searchedUser.profileImageData}}" alt="profile image"/>
         <div class="fb-profile-text">
             <h3>{{searchedUser.name}}</h3>
