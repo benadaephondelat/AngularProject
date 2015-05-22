@@ -5,9 +5,9 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
             .then(function(data){
                 loginRegisterServices.SetCredentials(data);
                 $location.path('/home');
-                notificationsService.success('Successfully logged in');
+                FuckBook.showSuccessMessage('Successfully logged in', notificationsService);
             }, function (error) {
-                notificationsService.error(error.error_description);
+                FuckBook.showErrorMessage(error, notificationsService);
                 console.log(error);
             });
     };
@@ -17,9 +17,9 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
             .then(function(data){
                 loginRegisterServices.SetCredentials(data);
                 $location.path('/home');
-                notificationsService.success('Successfully registered');
+                FuckBook.showSuccessMessage('Successfully registered', notificationsService);
             }, function(error) {
-                notificationsService.error(error.error_description);
+                FuckBook.showErrorMessage(error, notificationsService);
                 console.log(error);
             });
     };
@@ -29,10 +29,10 @@ FuckBook.controller("LoginRegisterController", function ($scope, loginRegisterSe
             .then(function(data) {
                 sessionStorage.clear();
                 $location.path('#/');
-                notificationsService.success('Goodbye!');
+                FuckBook.showSuccessMessage('Goodbye!', notificationsService);
             }, function(error) {
                 console.log(error);
-                notificationsService.error(error.error_description);
+                FuckBook.showErrorMessage(error, notificationsService);
             });
     };
 

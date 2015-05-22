@@ -3,9 +3,9 @@ FuckBook.controller("EditProfileController", function ($scope, editProfileServic
     $scope.changePassword = function () {
         editProfileService.changePassword($scope.changePasswordData)
             .then(function(data){
-               notificationsService.success('Password successfully changed!');
+               FuckBook.showSuccessMessage('Password successfully changed!', notificationsService);
             }, function(error) {
-                notificationsService.error(error.error_description);
+                FuckBook.showErrorMessage(error, notificationsService);
                 console.log(error);
             });
     };
@@ -22,9 +22,9 @@ FuckBook.controller("EditProfileController", function ($scope, editProfileServic
     $scope.editProfile = function() {
         editProfileService.editProfile($scope.editData)
             .then(function (data) {
-              notificationsService.success('Profile successfully edited.');
+                FuckBook.showSuccessMessage('Profile successfully edited.', notificationsService);
             }, function (error) {
-                notificationsService.error(error.error_description);
+                FuckBook.showErrorMessage(error, notificationsService);
                 console.log(error);
             });
     };

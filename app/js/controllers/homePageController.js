@@ -6,28 +6,28 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
         friendsService.getReceivedRequests()
             .then(function (data) {
                 $scope.watingRequests = data;
-            }, function(err){
-                console.log(err);
+            }, function(error){
+                console.log(error);
             })
     };
 
     $scope.acceptFriendRequest  = function (userId) {
         friendsService.acceptFriendRequest(userId)
             .then(function (data) {
-                notificationsService.success('Friend request accepted!');
-            }, function(err){
-                console.log(err);
-                notificationsService.error(error.error_description);
+                FuckBook.showSuccessMessage('Friend request accepted!', notificationsService);
+            }, function(error){
+                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             });
     };
 
     $scope.rejectFriendRequest  = function (userId) {
         friendsService.rejectFriendRequest(userId)
             .then(function (data) {
-                notificationsService.success('Friend request rejected!');
-            }, function(err){
-                notificationsService.error(error.error_description);
-                console.log(err)
+                FuckBook.showSuccessMessage('Friend request rejected!', notificationsService);
+            }, function(error){
+                FuckBook.showErrorMessage(error, notificationsService);
+                console.log(error)
             });
     };
 
@@ -36,10 +36,10 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
             .then(function (data) {
                 console.log(data);
                 $scope.searchedUser.hasPendingRequest = true;
-                notificationsService.success('Friend request sent!');
-            }, function (err) {
-                notificationsService.error(error.error_description);
-                console.log(err);
+                FuckBook.showSuccessMessage('Friend request sent!', notificationsService);
+            }, function (error) {
+                FuckBook.showErrorMessage(error, notificationsService);
+                console.log(error);
             })
     };
 });
