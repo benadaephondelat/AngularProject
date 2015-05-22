@@ -9,9 +9,9 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
             .then(function (data) {
                 FuckBook.showSuccessMessage('Post successfully added!', notificationsService);
                 console.log(data);
-            }, function (err) {
+            }, function (error) {
                 FuckBook.showErrorMessage(error, notificationsService);
-                console.log(err);
+                console.log(error);
             })
     };
 
@@ -32,8 +32,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                     $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
                 }
                 $scope.isBusy = false;
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
             })
     };
 
@@ -48,8 +48,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                 ++post.totalCommentsCount;
                 console.log(data);
                 FuckBook.showSuccessMessage('Comment successfully added!', notificationsService);
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             })
     };
@@ -59,8 +59,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
             .then(function (data) {
                 console.log(data);
                 $scope.comments = data.comments;
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
             })
     };
 
@@ -68,8 +68,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
         postServices.EditPostById(id,$scope.contentToChange)
             .then(function (data) {
 
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
             })
     };
 
@@ -89,8 +89,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                 post.liked = true;
                 post.likesCount++;
                 FuckBook.showSuccessMessage('Post successfully liked!', notificationsService);
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             })
     };
@@ -101,8 +101,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                 post.likesCount--;
                 console.log('disLiked');
                 FuckBook.showSuccessMessage('Post successfully unliked!', notificationsService);
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             })
     };
@@ -114,8 +114,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                 comment.liked = true;
                 comment.likesCount++;
                 FuckBook.showSuccessMessage('Comment successfully liked!', notificationsService);
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             })
     };
@@ -127,8 +127,8 @@ FuckBook.controller('postController', function ($scope, postServices, notificati
                 comment.liked = false;
                 comment.likesCount--;
                 FuckBook.showSuccessMessage('Comment successfully unliked!', notificationsService);
-            }, function (err) {
-                console.log(err);
+            }, function (error) {
+                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             })
     };

@@ -13,7 +13,7 @@ FuckBook.factory('notificationsService', function () {
                         text: message,
                         type: 'error',
                         layout: 'center',
-                        timeout: 300}
+                        timeout: 3000}
                 );
             }
         }

@@ -15,7 +15,8 @@ FuckBook.directive('mypopover', function ($compile,$templateCache) {
                 break;
         }
         return template;
-    }
+    };
+
     return {
         restrict: "A",
         link: function (scope, element, attrs) {

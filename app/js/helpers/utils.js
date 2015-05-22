@@ -14,6 +14,13 @@ var FuckBook = FuckBook || {};
         notificationsService.success(message);
     };
 
+    var authorizationCheck = function(location) {
+        if(!sessionStorage.getItem('accessToken')){
+            location.path('/');
+        }
+    };
+
     FuckBook.showErrorMessage = showErrorMessage;
     FuckBook.showSuccessMessage = showSuccessMessage;
+    FuckBook.authorizationCheck = authorizationCheck;
 })();

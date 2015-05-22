@@ -14,8 +14,8 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
             .then(function(data){
                 console.log(data);
                 $scope.findedUsers = data;
-            }, function(err){
-                console.log(err);
+            }, function(error){
+                console.log(error);
             })
     };
 
@@ -32,8 +32,8 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
         friendsService.getMyFriends()
             .then(function (data) {
                 $scope.myFriends = data;
-            }, function(err){
-                console.log(err);
+            }, function(error){
+                console.log(error);
             })
     };
 
@@ -48,8 +48,8 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
         friendsService.getFriendsOfFriend($routeParams.name)
             .then(function(data) {
                 $scope.hisFriends = data;
-            }, function(err) {
-                console.log(err);
+            }, function(error) {
+                console.log(error);
             })
     }
 
