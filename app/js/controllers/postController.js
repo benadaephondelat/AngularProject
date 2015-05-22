@@ -35,13 +35,15 @@ FuckBook.controller('postController', function ($scope, postServices) {
             })
     };
 
-    $scope.addCommentToPost = function (postId) {
+    $scope.addCommentToPost = function (post) {
         var data = {
             commentContent: $scope.commentData.content
         };
         console.log($scope.commentData);
-        postServices.AddCommentToPost(postId, data)
+        postServices.AddCommentToPost(post.id, data)
             .then(function (data) {
+                post.comments.push(data);
+                ++post.totalCommentsCount;
                 console.log(data);
             }, function (err) {
                 console.log(err);

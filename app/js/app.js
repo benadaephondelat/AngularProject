@@ -1,4 +1,4 @@
-var FuckBook = angular.module('FuckBook', ['ngRoute', 'customFilters', 'infinite-scroll']);
+var FuckBook = angular.module('FuckBook', ['ngRoute', 'customFilters', 'infinite-scroll', 'angularSpinner']);
 
 FuckBook.config(function ($routeProvider) {
     $routeProvider
