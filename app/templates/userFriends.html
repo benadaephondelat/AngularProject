@@ -1,0 +1,17 @@
+<navbar></navbar>
+<div class="panel panel-success" ng-controller="FriendsController" ng-init="showFriendsOfFriend()">
+    <div class="panel-heading col-md-2">
+        <a href="{{'#/users/'+ sessionStorage['searchedUser']}}"></a> <span> Friends: ({{hisFriends.length}} total)</span>
+    </div>
+    <div id="firendsContainerPage" class="row">
+        <input id="friendsSearch" ng-model="input" ng-keyup="showMyFriends()" class="form-control" placeholder="Search..." type="search">
+        <div ng-repeat="friend in hisFriends| filter:input">
+            <div ng-click="redirectToUsersPage(friend.username)" class="col-xs-4 col-md-2">
+                <a class="thumbnail">
+                    <img default-picture ng-src="{{friend.profileImageData}}">
+                    <span>{{friend.name}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

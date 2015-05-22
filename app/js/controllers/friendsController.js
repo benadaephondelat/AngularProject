@@ -1,4 +1,4 @@
-FuckBook.controller("FriendsController", function ($scope, friendsService, $location) {
+FuckBook.controller("FriendsController", function ($scope, friendsService, $location, $routeParams) {
 
     $scope.loadFriends = function() {
         friendsService.getFriends()
@@ -43,9 +43,16 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
         sessionStorage['searchedUser'] = username;
         console.log($scope);
         $location.path('/users/' + username);
+    };
+
+    $scope.showFriendsOfFriend = function() {
+        friendsService.getFriendsOfFriend($routeParams.name)
+            .then(function(data) {
+                $scope.hisFriends = data;
+            }, function(err) {
+                console.log(err);
+            })
     }
-
-
 
 
 });

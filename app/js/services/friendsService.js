@@ -32,6 +32,7 @@ FuckBook.factory('friendsService', function ($http, $q) {
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/" + userName)
             .success(function (data) {
                 console.log(data);
+                sessionStorage['currentUser'] = data.username;
                 deferred.resolve(data);
             }).error(function (error) {
                 deferred.reject(error);
@@ -93,6 +94,18 @@ FuckBook.factory('friendsService', function ($http, $q) {
             .success(function (data) {
                 deferred.resolve(data);
             }).error(function (error) {
+                deferred.reject(error);
+            });
+        return deferred.promise;
+    };
+
+    service.getFriendsOfFriend = function(username) {
+        var deferred = $q.defer();
+        $http.defaults.headers.common = GetHeaders();
+        $http.get("http://softuni-social-network.azurewebsites.net/api/users/" + username + "/friends")
+            .success(function(data) {
+                deferred.resolve(data);
+            }).error(function(error) {
                 deferred.reject(error);
             });
         return deferred.promise;

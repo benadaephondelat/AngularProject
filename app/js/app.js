@@ -22,7 +22,7 @@ FuckBook.config(function ($routeProvider) {
             templateUrl: 'templates/friends.html',
             controller: 'FriendsController'
         })
-        .when('/users/:name*', {
+        .when('/users/:name', {
             controller: 'FriendsController',
             templateUrl: function(){
                 return 'templates/userWall.html';
@@ -34,6 +34,14 @@ FuckBook.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'templates/welcome.html'
         })
+        .when('/users/:name/friends', {
+            controller: 'FriendsController',
+            templateUrl: function () {
+                return 'templates/userFriends.html';
+            }
+        })
+
+
         .otherwise({redirectTo: '/'})
 }).run(function($location) {
     if(!sessionStorage.getItem('accessToken')){

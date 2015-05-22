@@ -88,3 +88,14 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
     background-size: cover;
     background-position: center;
 }
+
+#friendsSearch {
+    width: 80%;
+    border: 1px solid gray;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+#friendsLegend {
+    background-color: black;
+}
