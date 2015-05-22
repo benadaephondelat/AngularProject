@@ -39,7 +39,7 @@ FuckBook.factory('postServices', function ($http, $q) {
 
     service.GetCommentByPostId = function(postId){
         var deferred = $q.defer();
-        $http.get(serviceUrl+"posts/"+postId)
+        $http.get(serviceUrl+"posts/"+postId+"/comments")
             .success(function (data) {
                 deferred.resolve(data);
             }).error(function (error) {

@@ -4,6 +4,6 @@
     <a href="{{'#/users/' + searchedUser.username + '/friends'}}">Friends  total {{hisFriends.length}}</a>
     <div class="col-xs-6 col-md-3" ng-repeat="friend in hisFriends | limitTo: 6">
         <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px" alt=""/>
-        <a><span ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
+        <a><span id="friendWallFriends" ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
     </div>
 </div>

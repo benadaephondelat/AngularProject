@@ -30,9 +30,7 @@
 #friendRequests {
     margin-top: 10px;
 }
-#results {
-    background-color: gray;
-}
+
 
 
 
@@ -98,4 +96,25 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
 
 #friendsLegend {
     background-color: black;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+#likePost, #unlikePost, #likeComment, #unlikeComment, #myFriendUsername, #friendsOfFriendUsername, #friendWallFriends, #friendUsername, #logout, #postAuthor, #searchResult {
+    cursor: pointer;
+}
+
+#searchResult {
+    color: red;
+    font-weight: bold;
+}
+
+#results {
+    background-color: lightgray;
+    text-decoration: none;
+    list-style-type: none;
+
+    margin-bottom: 5px;
 }

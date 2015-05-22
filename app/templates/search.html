@@ -2,7 +2,7 @@
     <input ng-model="search.searchTerm" ng-keyup="search()" type="search"/>
     <ul id="results">
         <li ng-repeat="user in findedUsers">
-            <div class="foundedUser" ng-click="redirectToUsersPage(user.username)"> {{user.name}}</div>
+            <div id="searchResult" class="foundedUser" ng-click="redirectToUsersPage(user.username)"> {{user.name}}</div>
             <img class="searchedProfilePic" default-picture ng-src="{{user.profileImageData}}" style="height: 50px; width: 50px" alt=""/>
         </li>
     </ul>

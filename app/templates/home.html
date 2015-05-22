@@ -15,35 +15,30 @@
                                 <div class="panel-heading">
                                     <img class="[ img-circle pull-left ]" default-picture ng-src="{{post.author.profileImageData}}" style="width: 75px; height: 75px"/>
 
-                                    <!--<body ng-controller="MainCtrl">-->
-                                    <!--<script type="text/ng-template" id="templateId.html">-->
-                                        <!--<img src="{{post.author.profileImageData}}">-->
-
-                                    <!--</script>-->
-                                    <!--<a mypopover data-placement="right" title="title">Click here</a>-->
-                                    <!--</body>-->
-
-                                    <h3 style="font-weight: bold; text-decoration: underline" ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}}</h3>
+                                    <h3 id="postAuthor" style="font-weight: bold; text-decoration: underline" ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}}</h3>
                                     <h5><span>Shared this on</span> - <span>{{post.date | date}}</span></h5>
                                 </div>
                                 <div class="panel-body">
                                     <p>{{post.postContent}}</p>
                                 </div>
                                 <div class="panel-footer">
-                                    <a ng-if="!post.liked" ng-click="likePost(post)" class="[glyphicon glyphicon-hand-right]">
+                                    <a ng-if="!post.liked" id="likePost" ng-click="likePost(post)" class="[glyphicon glyphicon-hand-right]">
                                         <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
-                                        <span class="badge">{{post.likesCount}}</span></a>
-                                    <a ng-if="post.liked" ng-click="unLikePost(post)" class="[glyphicon glyphicon-hand-right]">
+                                        <span class="badge">{{post.likesCount}}</span>
+                                    </a>
+                                    <a ng-if="post.liked" id="unlikePost" ng-click="unLikePost(post)" class="[glyphicon glyphicon-hand-right]">
                                         <span class="glyphicon glyphicon-thumbs-down"></span><span>Unlike</span>
-                                        <span class="badge">{{post.likesCount}}</span></a></a>
-                                    <button ng-click="showComments=!showComments" class="[ btn btn-default ]">Comments {{post.totalCommentsCount}}</button>
+                                        <span class="badge">{{post.likesCount}}</span></a>
+                                    </a>
+                                    <button ng-click="showComments=!showComments; getCommentByPostId(post.id)" class="[ btn btn-default ]">Comments {{post.totalCommentsCount}}</button>
                                 </div>
-                                <div class="panel-google-plus-comment">
+
+                                <div ng-show="showComments"  class="panel-google-plus-comment">
                                     <img class="img-circle" src="https://lh3.googleusercontent.com/uFp_tsTJboUY7kue5XAsGA=s46" alt="User Image"/>
 
-                                    <div class="panel-google-plus-textarea">
+                                    <div ng-controller="postController" class="panel-google-plus-textarea">
 
-                                        <form action="" ng-controller="postController">
+                                        <form>
                                             <input ng-model="commentData.content" value="" type="text">
                                             <input ng-click="addCommentToPost(post)" type="submit" value="Comment this post">
                                         </form>
@@ -74,16 +69,38 @@
                                     <div class="media-body">
                                         <h4 class="media-heading user_name">{{comments.author.name}}</h4>
                                         <p>{{comment.commentContent}}</p>
-                                        <a ng-if="!comment.liked" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">
+                                        <a ng-if="!comment.liked" id="likeComment" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">
                                             <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
                                             <span class="badge">{{comment.likesCount}}</span></a>
-                                        <a ng-if="comment.liked" ng-click="unLikeComment(post, comment)" class="[glyphicon glyphicon-thumbs-down]">
+                                        <a ng-if="comment.liked" id="unlikeComment" ng-click="unLikeComment(post, comment)" class="[glyphicon glyphicon-thumbs-down]">
                                             <span class="glyphicon glyphicon-thumbs-down"></span><span>Dislike</span>
                                             <span class="badge">{{comment.likesCount}}</span></a></a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div ng-show="showMore">
+                                <div class="comments-list" ng-repeat="comment in comments[post.id]" ng-if="$index > 2">
+                                <div class="media">
+                                    <p class="pull-right"><small>{{comment.date | date}}</small></p>
+                                    <a class="media-left">
+                                        <img default-picture ng-src="{{comment.author.profileImageData}}" ng-click="redirectToUsersPage(comment.author.username)" style="width: 70px;height: 70px">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading user_name">{{comments.author.name}}</h4>
+                                        <p>{{comment.commentContent}}</p>
+                                        <a ng-if="!comment.liked" id="likeComment" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">
+                                            <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+                                            <span class="badge">{{comment.likesCount}}</span></a>
+                                        <a ng-if="comment.liked" id="unlikeComment" ng-click="unLikeComment(post, comment)" class="[glyphicon glyphicon-thumbs-down]">
+                                            <span class="glyphicon glyphicon-thumbs-down"></span><span>Dislike</span>
+                                            <span class="badge">{{comment.likesCount}}</span></a></a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <button ng-click="showMore = !showMore" value="ShowMoreComments" id="moreCommentsButton" style="margin: 10px 10px 10px 10px">Show More/Less Comments</button>
+                    </div>
                     </div>
                 </div>
             </div>
