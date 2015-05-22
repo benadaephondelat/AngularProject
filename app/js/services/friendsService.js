@@ -85,6 +85,20 @@ FuckBook.factory('friendsService', function ($http, $q) {
         return deferred.promise;
     };
 
+
+    $http.defaults.headers.common = GetHeaders();
+    service.sendFriendRequest = function (username) {
+        var deferred = $q.defer();
+        $http.post("http://softuni-social-network.azurewebsites.net/api/me/requests/" + username)
+            .success(function (data) {
+                deferred.resolve(data);
+            }).error(function (error) {
+                deferred.reject(error);
+            });
+        return deferred.promise;
+    };
+
+
     function GetHeaders() {
         return {
             'Authorization': 'Bearer ' + sessionStorage['accessToken']

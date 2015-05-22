@@ -36,5 +36,16 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
             }, function(err){
                 console.log(err)
             });
-    }
+    };
+
+    $scope.sendFriendRequest = function (username) {
+        friendsService.sendFriendRequest(username)
+            .then(function (data) {
+                console.log(data);
+                $scope.searchedUser.hasPendingRequest = true;
+
+            }, function (err) {
+                console.log(err);
+            })
+    };
 });

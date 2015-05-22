@@ -17,6 +17,14 @@
                                          ng-src="{{post.author.profileImageData}}"
                                          alt="Mouse0270"/>
 
+                                    <!--<body ng-controller="MainCtrl">-->
+                                    <!--<script type="text/ng-template" id="templateId.html">-->
+                                        <!--<img src="{{post.author.profileImageData}}">-->
+
+                                    <!--</script>-->
+                                    <!--<a mypopover data-placement="right" title="title">Click here</a>-->
+                                    <!--</body>-->
+
                                     <h3 style="font-weight: bold; text-decoration: underline" ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}}</h3>
                                     <h5><span>Shared this on</span> - <span>{{post.date | date}}</span></h5>
                                 </div>
@@ -24,7 +32,12 @@
                                     <p>{{post.postContent}}</p>
                                 </div>
                                 <div class="panel-footer">
-                                    <button type="button" class="[ glyphicon glyphicon-hand-right ]">Like</button>
+                                    <a ng-if="!post.liked" ng-click="likePost(post)" class="[glyphicon glyphicon-hand-right]">
+                                        <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+                                        <span class="badge">{{post.likesCount}}</span></a>
+                                    <a ng-if="post.liked" ng-click="unLikePost(post)" class="[glyphicon glyphicon-hand-right]">
+                                        <span class="glyphicon glyphicon-thumbs-down"></span><span>Unlike</span>
+                                        <span class="badge">{{post.likesCount}}</span></a></a>
                                     <button ng-click="showComments=!showComments" class="[ btn btn-default ]">Comments {{post.totalCommentsCount}}</button>
                                 </div>
                                 <div class="panel-google-plus-comment">
@@ -63,42 +76,20 @@
                                     <div class="media-body">
                                         <h4 class="media-heading user_name">{{comments.author.name}}</h4>
                                         <p>{{comment.commentContent}}</p>
-                                        <p><small><a class="[ glyphicon glyphicon-hand-right ]">Like</a></small></p>
+                                        <a ng-if="!comment.liked" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">
+                                            <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+                                            <span class="badge">{{comment.likesCount}}</span></a>
+                                        <a ng-if="comment.liked" ng-click="unLikeComment(post, comment)" class="[glyphicon glyphicon-thumbs-down]">
+                                            <span class="glyphicon glyphicon-thumbs-down"></span><span>Dislike</span>
+                                            <span class="badge">{{comment.likesCount}}</span></a></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-    </div>
-
-
+            </div>
             </div>
         </div>
     </div>
 </div>
-
-<!--<h3>{{post.postContent}}</h3>-->
-
-<!--<button ng-click="showContent=!showContent">comment this post</button>-->
-<!--<div ng-show="showContent">-->
-<!--<form action="" ng-submit="addCommentToPost(post.id)" ng-controller="postController">-->
-<!--<input ng-model="commentData.content" value="" type="text">-->
-<!--<input type="submit" value="Comment this post">-->
-<!--</form>-->
-<!--</div>-->
-<!--<button ng-click="getCommentByPostId(post.id)">show comments</button>-->
-<!--<div>-->
-<!--<div ng-repeat='comment in post.comments'>-->
-<!--<p ng-click="showUser(comment.author.name)">{{comment.author.name}} </p>-->
-<!--<h4>{{comment.commentContent}}</h4>-->
-<!--</div>-->
-<!--</div>-->
-<!--<button ng-hide="showEditPost" ng-click="showEditPost=!showEditPost">edit post</button>-->
-<!--<div ng-show="showEditPost">-->
-<!--<form action="" ng-submit="editPostById(post.id)" ng-controller="homeController">-->
-<!--<input ng-model="$scope.contentToChange.postContent" value="" type="text">-->
-<!--<input type="submit" value="Edit post">-->
-<!--</form>-->
-<!--</div>-->

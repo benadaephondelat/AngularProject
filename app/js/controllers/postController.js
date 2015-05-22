@@ -79,5 +79,49 @@ FuckBook.controller('postController', function ($scope, postServices) {
             })
     };
 
+    $scope.likePost = function (post) {
+        postServices.LikePost(post.id)
+            .then(function (data) {
+                post.liked = true;
+                post.likesCount++;
+            }, function (err) {
+                console.log(err);
+            })
+    };
+    $scope.unLikePost = function (post) {
+        postServices.UnLikePost(post.id)
+            .then(function (data) {
+                post.liked = false;
+                post.likesCount--;
+                console.log('disLiked');
+            }, function (err) {
+                console.log(err);
+            })
+    };
+
+    $scope.likeComment= function(post, comment){
+        console.log(comment);
+        postServices.likeComment(post.id, comment.id)
+            .then(function (data) {
+                comment.liked = true;
+                comment.likesCount++;
+                console.log('disLiked');
+            }, function (err) {
+                console.log(err);
+            })
+    };
+
+    $scope.unLikeComment= function(post, comment){
+        console.log(comment);
+        postServices.unLikeComment(post.id, comment.id)
+            .then(function (data) {
+                comment.liked = false;
+                comment.likesCount--;
+                console.log('disLiked');
+            }, function (err) {
+                console.log(err);
+            })
+    };
+
 
 });

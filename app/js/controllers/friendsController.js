@@ -45,4 +45,7 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
         $location.path('/users/' + username);
     }
 
+
+
+
 });

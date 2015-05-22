@@ -19,11 +19,6 @@
     display: block;
 }
 
-#asd {
-    width: 50px;
-    height: 50px;
-}
-
 #friendsPanel {
     width: 400px;
     height: 250px;
@@ -37,4 +32,59 @@
 }
 #results {
     background-color: gray;
+}
+
+
+
+body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
+    height: 250px; !important;
+    background-size: 80px 60px;
+    background-repeat: no-repeat;
+}
+
+.profile img.fb-image-lg{
+    z-index: 0;
+    width: 100%;
+    max-height: 200px;
+    -o-object-fit: contain;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+    min-height: 200px;
+    min-width: 17%;
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 13%;
+}
+
+@media (max-width:768px)
+{
+
+    .fb-profile-text>h1{
+        font-weight: 700;
+        font-size:16px;
+    }
+
+    .fb-image-profile
+    {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
+
+#userBackgroundImage{
+    margin: 0 auto;
+    z-index: -1284;
+    width:95%;
+    height:300px;
+    display:block;
+    position:relative;
+    overflow:hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

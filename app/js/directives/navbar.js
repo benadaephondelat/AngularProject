@@ -3,5 +3,4 @@ FuckBook.directive('navbar', function(){
         restrict : 'E',
         templateUrl : 'templates/navbar.html'
     }
-
 });
