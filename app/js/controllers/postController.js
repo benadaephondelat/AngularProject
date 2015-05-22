@@ -1,4 +1,4 @@
-FuckBook.controller('postController', function ($scope, postServices) {
+FuckBook.controller('postController', function ($scope, postServices, notificationsService) {
     $scope.username = sessionStorage['username'];
     $scope.startPostId = "";
     $scope.newsPosts = [];
@@ -7,8 +7,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
     $scope.addPost = function () {
         postServices.AddPost()
             .then(function (data) {
+                notificationsService.success('Post successfully added!');
                 console.log(data);
             }, function (err) {
+                notificationsService.error(error.error_description);
                 console.log(err);
             })
     };
@@ -45,8 +47,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
                 post.comments.push(data);
                 ++post.totalCommentsCount;
                 console.log(data);
+                notificationsService.success('Comment successfully added!');
             }, function (err) {
                 console.log(err);
+                notificationsService.error(error.error_description);
             })
     };
 
@@ -84,8 +88,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
             .then(function (data) {
                 post.liked = true;
                 post.likesCount++;
+                notificationsService.success('Post successfully liked!');
             }, function (err) {
                 console.log(err);
+                notificationsService.error(error.error_description);
             })
     };
     $scope.unLikePost = function (post) {
@@ -94,8 +100,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
                 post.liked = false;
                 post.likesCount--;
                 console.log('disLiked');
+                notificationsService.success('Post successfully unliked!');
             }, function (err) {
                 console.log(err);
+                notificationsService.error(error.error_description);
             })
     };
 
@@ -105,9 +113,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
             .then(function (data) {
                 comment.liked = true;
                 comment.likesCount++;
-                console.log('disLiked');
+                notificationsService.success('Comment successfully liked!');
             }, function (err) {
                 console.log(err);
+                notificationsService.error(error.error_description);
             })
     };
 
@@ -117,9 +126,10 @@ FuckBook.controller('postController', function ($scope, postServices) {
             .then(function (data) {
                 comment.liked = false;
                 comment.likesCount--;
-                console.log('disLiked');
+                notificationsService.success('Comment successfully unliked!');
             }, function (err) {
                 console.log(err);
+                notificationsService.error(error.error_description);
             })
     };
 

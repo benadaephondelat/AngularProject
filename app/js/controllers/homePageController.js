@@ -1,15 +1,6 @@
-FuckBook.controller('HomePageController', function ($scope, loginRegisterServices, friendsService) {
+FuckBook.controller('HomePageController', function ($scope, loginRegisterServices, friendsService, notificationsService) {
 
     $scope.username = sessionStorage['username'];
-
-    $scope.logout = function(){
-        loginRegisterServices.Logout()
-            .then(function(data){
-
-            }, function(err){
-                console.log(err);
-            })
-    };
 
     $scope.getReceivedRequests = function(){
         friendsService.getReceivedRequests()
@@ -23,17 +14,19 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
     $scope.acceptFriendRequest  = function (userId) {
         friendsService.acceptFriendRequest(userId)
             .then(function (data) {
-
+                notificationsService.success('Friend request accepted!');
             }, function(err){
-                console.log(err)
+                console.log(err);
+                notificationsService.error(error.error_description);
             });
     };
 
     $scope.rejectFriendRequest  = function (userId) {
         friendsService.rejectFriendRequest(userId)
             .then(function (data) {
-
+                notificationsService.success('Friend request rejected!');
             }, function(err){
+                notificationsService.error(error.error_description);
                 console.log(err)
             });
     };
@@ -43,8 +36,9 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
             .then(function (data) {
                 console.log(data);
                 $scope.searchedUser.hasPendingRequest = true;
-
+                notificationsService.success('Friend request sent!');
             }, function (err) {
+                notificationsService.error(error.error_description);
                 console.log(err);
             })
     };

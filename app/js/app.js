@@ -40,8 +40,6 @@ FuckBook.config(function ($routeProvider) {
                 return 'templates/userFriends.html';
             }
         })
-
-
         .otherwise({redirectTo: '/'})
 }).run(function($location) {
     if(!sessionStorage.getItem('accessToken')){

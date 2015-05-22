@@ -23,7 +23,6 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
         friendsService.getUserWall(sessionStorage['searchedUser'])
             .then(function(data){
                 $scope.searchedUser = data;
-
             }, function (error) {
                 console.log(error);
             })
@@ -53,6 +52,5 @@ FuckBook.controller("FriendsController", function ($scope, friendsService, $loca
                 console.log(err);
             })
     }
-
 
 });

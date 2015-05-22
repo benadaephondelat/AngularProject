@@ -1,10 +1,11 @@
-FuckBook.controller("EditProfileController", function ($scope, editProfileService, $location) {
+FuckBook.controller("EditProfileController", function ($scope, editProfileService, $location, notificationsService) {
 
     $scope.changePassword = function () {
         editProfileService.changePassword($scope.changePasswordData)
             .then(function(data){
-
+               notificationsService.success('Password successfully changed!');
             }, function(error) {
+                notificationsService.error(error.error_description);
                 console.log(error);
             });
     };
@@ -21,8 +22,9 @@ FuckBook.controller("EditProfileController", function ($scope, editProfileServic
     $scope.editProfile = function() {
         editProfileService.editProfile($scope.editData)
             .then(function (data) {
-
+              notificationsService.success('Profile successfully edited.');
             }, function (error) {
+                notificationsService.error(error.error_description);
                 console.log(error);
             });
     };
