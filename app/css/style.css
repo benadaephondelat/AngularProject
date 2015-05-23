@@ -3,15 +3,7 @@
     text-align: center;
 }
 
-#loginForm {
-    text-align: center;
-}
-
-#registerForm {
-    text-align: center;
-}
-
-#passwordChangeForm {
+#loginForm, #registerForm, #passwordChangeForm {
     text-align: center;
 }
 
@@ -112,7 +104,5 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
     background-color: lightgray;
     text-decoration: none;
     list-style-type: none;
-
     margin-bottom: 5px;
 }
-
