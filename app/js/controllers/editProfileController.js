@@ -39,30 +39,10 @@ FuckBook.controller("EditProfileController", function ($scope, $location, editPr
     };
 
     $scope.uploadProfilePicture = function () {
-        selectFile("profilePicture", "profilePicturePreview");
+        FuckBook.selectFile("profilePicture", "profilePicturePreview", $scope);
     };
 
     $scope.uploadCoverPicture = function () {
-        selectFile("coverPicture", "coverPicturePreview");
+        FuckBook.selectFile("coverPicture", "coverPicturePreview", $scope);
     };
-
-    function selectFile(inputSelector, picturePreview){
-        $('body').on('change', "#" + inputSelector, function() {
-            var fileInput = document.getElementById(inputSelector);
-            var file = fileInput.files[0];
-            var reader = new FileReader();
-            reader.onload = function () {
-                var targetSource = document.getElementById(picturePreview);
-                targetSource.src = reader.result;
-                if(inputSelector == "profilePicture"){
-                    $scope.editData.profileImageData = targetSource.src;
-                }
-                else{
-                    $scope.editData.coverImageData = targetSource.src;
-                }
-            };
-
-            reader.readAsDataURL(file);
-        });
-    }
 });

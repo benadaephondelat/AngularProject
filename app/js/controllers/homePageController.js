@@ -1,5 +1,4 @@
 FuckBook.controller('HomePageController', function ($scope, loginRegisterServices, friendsService, notificationsService, spinner) {
-
     $scope.username = sessionStorage['username'];
 
     $scope.getReceivedRequests = function(){

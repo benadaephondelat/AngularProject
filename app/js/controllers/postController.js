@@ -142,6 +142,7 @@
                 spinner.stop();
             })
     };
+
     $scope.unLikePost = function (post) {
         spinner.start();
         postServices.unlikePost(post.id)
