@@ -106,3 +106,7 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
     list-style-type: none;
     margin-bottom: 5px;
 }
+
+#submitPost {
+    width: 25%;
+}

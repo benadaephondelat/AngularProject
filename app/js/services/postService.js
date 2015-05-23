@@ -4,7 +4,7 @@ FuckBook.factory('postServices', function ($http, $q) {
 
     service.addPost = function (postData) {
         var deferred = $q.defer();
-        $http.post(serviceUrl, postData)
+        $http.post(serviceUrl + 'posts', postData)
             .success(function (data) {
                 deferred.resolve(data);
             }).error(function (error) {

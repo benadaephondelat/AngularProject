@@ -1,21 +1,24 @@
-    FuckBook.controller('postController', function ($scope, postServices, notificationsService, spinner) {
+FuckBook.controller('postController', function ($scope, $routeParams,  postServices, notificationsService, spinner) {
     $scope.username = sessionStorage['username'];
     $scope.startPostId = "";
     $scope.newsPosts = [];
+    $scope.usernewsPosts = [];
     $scope.isBusy = false;
     $scope.comments = [];
 
     $scope.addPost = function () {
-        spinner.start();
-        postServices.addPost()
+        var data = {
+            postContent: $scope.postFriendData,
+            username: $routeParams.name
+        };
+
+        postServices.addPost(data)
             .then(function (data) {
-                FuckBook.showSuccessMessage('Post successfully added!', notificationsService);
                 console.log(data);
-            }, function (error) {
-                FuckBook.showErrorMessage(error, notificationsService);
-                console.log(error);
-            }).finally(function() {
-                spinner.stop();
+                console.log($scope.usernewsPosts);
+                $scope.usernewsPosts.splice(0, 0, data);
+            }, function (err) {
+                console.log(err);
             })
     };
 
@@ -33,13 +36,13 @@
                 for (var i = 0; i < posts.length; i++) {
                     $scope.newsPosts.push(posts[i]);
                 }
-                if($scope.newsPosts.length != 0) {
+                if ($scope.newsPosts.length != 0) {
                     $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
                 }
                 $scope.isBusy = false;
             }, function (error) {
                 console.log(error);
-            }).finally(function() {
+            }).finally(function () {
                 spinner.stop();
             });
     };
@@ -56,28 +59,28 @@
                 $scope.busy = true;
                 var posts = data;
                 for (var i = 0; i < posts.length; i++) {
-                    $scope.newsPosts.push(posts[i]);
+                    $scope.usernewsPosts.push(posts[i]);
                 }
-                if($scope.newsPosts.length != 0) {
-                    $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
+                if ($scope.usernewsPosts.length != 0) {
+                    $scope.startPostId = $scope.usernewsPosts[$scope.usernewsPosts.length - 1].id;
                 }
                 $scope.isBusy = false;
             }, function (error) {
                 console.log(error);
-            }).finally(function() {
+            }).finally(function () {
                 spinner.stop();
             });
     };
 
     $scope.addCommentToPost = function (post) {
         spinner.start();
-        if($scope.commentData) {
+        if ($scope.commentData) {
             var data = {
                 commentContent: $scope.commentData.content
             };
             postServices.addCommentToPost(post.id, data)
                 .then(function (data) {
-                    post.comments.splice(0, 0 ,data);
+                    post.comments.splice(0, 0, data);
                     ++post.totalCommentsCount;
                     console.log(data);
                     FuckBook.showSuccessMessage('Comment successfully added!', notificationsService);
@@ -104,22 +107,22 @@
             })
     };
 
-    $scope.editPostById = function(id){
+    $scope.editPostById = function (id) {
         spinner.start();
-        postServices.editPostById(id,$scope.contentToChange)
+        postServices.editPostById(id, $scope.contentToChange)
             .then(function (data) {
             }, function (error) {
                 console.log(error);
             }).finally(function () {
-               spinner.stop();
+                spinner.stop();
             });
     };
 
-    $scope.showUser = function(name) {
+    $scope.showUser = function (name) {
         spinner.start();
         postServices.searchByName(name)
             .then(function (data) {
-               console.log(data);
+                console.log(data);
             }, function (error) {
                 console.log(error);
             }).finally(function () {
@@ -138,7 +141,7 @@
             }, function (error) {
                 console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
-            }).finally(function() {
+            }).finally(function () {
                 spinner.stop();
             })
     };
@@ -159,7 +162,7 @@
             })
     };
 
-    $scope.likeComment= function(post, comment){
+    $scope.likeComment = function (post, comment) {
         spinner.start();
         console.log(comment);
         postServices.likeComment(post.id, comment.id)
@@ -175,7 +178,7 @@
             })
     };
 
-    $scope.unLikeComment= function(post, comment){
+    $scope.unLikeComment = function (post, comment) {
         spinner.start();
         console.log(comment);
         postServices.unLikeComment(post.id, comment.id)

@@ -1,18 +1,22 @@
 <navbar></navbar>
 <userwall></userwall>
-<div ng-controller="FriendsController" ng-init="showFriendsOfFriend(sessionStorage['searchedUser'])" id="friendsPanel"
-     class="row">
+<div ng-controller="FriendsController" ng-init="showFriendsOfFriend(sessionStorage['searchedUser'])" id="friendsPanel" class="row">
     <a href="{{'#/users/' + searchedUser.username + '/friends'}}">Friends total {{hisFriends.length}}</a>
     <div class="col-xs-6 col-md-3" ng-repeat="friend in hisFriends | limitTo: 6">
-        <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px"
-             alt=""/>
+        <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px" alt=""/>
         <a><span id="friendWallFriends" ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
     </div>
 </div>
+
 <div id="news-feed" ng-controller="postController">
+    <form id="submitPost" ng-submit="addPost()">
+        <input id="addPostToFried" class="form-control" ng-model="postFriendData" type="text" placeholder="Add post"/>
+        <input class="btn btn-lg btn-warning" type="submit" value="POST"/>
+    </form>
+
     <h1>News Feed</h1>
     <div infinite-scroll="nextPageUser()" infinite-scroll-distance='2'>
-        <div ng-repeat='post in newsPosts'>
+        <div ng-repeat='post in usernewsPosts'>
             <post></post>
             <div ng-show="showComments">
                 <div class="container">
@@ -27,8 +31,7 @@
                                 <comment></comment>
                             </div>
                             <div ng-show="showMore">
-                                <div class="comments-list" ng-repeat="comment in comments[post.id]"
-                                     ng-if="$index > 2">
+                                <div class="comments-list" ng-repeat="comment in comments[post.id]" ng-if="$index > 2">
                                     <comment></comment>
                                 </div>
                             </div>
