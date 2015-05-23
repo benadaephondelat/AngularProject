@@ -1518,7 +1518,7 @@
     // Otherwise expose Flow to the global object as usual
     window.Flow = Flow;
 
-    // Register as a named AMD module, since Flow can be concatenated with other
+    // register as a named AMD module, since Flow can be concatenated with other
     // files that may use define, but not via a proper concatenation script that
     // understands anonymous AMD modules. A named AMD is safest and most robust
     // way to register. Lowercase flow is used because AMD module names are

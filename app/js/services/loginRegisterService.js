@@ -2,7 +2,7 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
     var serviceUrl = "http://softuni-social-network.azurewebsites.net/api/users/";
     var service = {};
 
-    service.Register = function (registerData) {
+    service.register = function (registerData) {
         var defer = $q.defer();
         $http.post(serviceUrl + "register", registerData)
             .success(function (data) {
@@ -13,7 +13,7 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
         return defer.promise;
     };
 
-    service.Login = function (loginData) {
+    service.login = function (loginData) {
         var defer = $q.defer();
         $http.post(serviceUrl + "login", loginData)
             .success(function (data) {
@@ -24,9 +24,9 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
         return defer.promise;
     };
 
-    service.Logout = function () {
+    service.logout = function () {
         var defer = $q.defer();
-        $http.defaults.headers.common = GetHeaders();
+        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.post(serviceUrl + "logout")
             .success(function (data) {
                 sessionStorage.clear();
@@ -38,16 +38,11 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
         return defer.promise;
     };
 
-    service.SetCredentials = function (data) {
+    service.setCredentials = function (data) {
         sessionStorage['accessToken'] = data.access_token;
         sessionStorage['username'] = data.userName;
     };
 
-    function GetHeaders() {
-        return {
-            'Authorization': 'Bearer ' + sessionStorage['accessToken']
-        };
-    }
 
     return service;
 });

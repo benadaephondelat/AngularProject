@@ -14,7 +14,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
 
     $scope.search = function(){
         spinner.start();
-        friendsService.SearchByName($scope.search.searchTerm)
+        friendsService.searchByName($scope.search.searchTerm)
             .then(function(data){
                 console.log(data);
                 $scope.findedUsers = data;

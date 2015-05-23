@@ -7,7 +7,7 @@
 
     $scope.addPost = function () {
         spinner.start();
-        postServices.AddPost()
+        postServices.addPost()
             .then(function (data) {
                 FuckBook.showSuccessMessage('Post successfully added!', notificationsService);
                 console.log(data);
@@ -25,7 +25,32 @@
             return;
         }
         $scope.isBusy = true;
-        postServices.NewsFeedPosts($scope.startPostId)
+        postServices.newsFeedPosts($scope.startPostId)
+            .then(function (data) {
+                console.log(data);
+                $scope.busy = true;
+                var posts = data;
+                for (var i = 0; i < posts.length; i++) {
+                    $scope.newsPosts.push(posts[i]);
+                }
+                if($scope.newsPosts.length != 0) {
+                    $scope.startPostId = $scope.newsPosts[$scope.newsPosts.length - 1].id;
+                }
+                $scope.isBusy = false;
+            }, function (error) {
+                console.log(error);
+            }).finally(function() {
+                spinner.stop();
+            });
+    };
+
+    $scope.nextPageUser = function () {
+        spinner.start();
+        if ($scope.isBusy) {
+            return;
+        }
+        $scope.isBusy = true;
+        postServices.userPosts($scope.startPostId, sessionStorage['searchedUser'])
             .then(function (data) {
                 console.log(data);
                 $scope.busy = true;
@@ -50,7 +75,7 @@
             var data = {
                 commentContent: $scope.commentData.content
             };
-            postServices.AddCommentToPost(post.id, data)
+            postServices.addCommentToPost(post.id, data)
                 .then(function (data) {
                     post.comments.splice(0, 0 ,data);
                     ++post.totalCommentsCount;
@@ -69,7 +94,7 @@
 
     $scope.getCommentByPostId = function (id) {
         spinner.start();
-        postServices.GetCommentByPostId(id)
+        postServices.getCommentByPostId(id)
             .then(function (data) {
                 $scope.comments[id] = data;
             }, function (error) {
@@ -81,7 +106,7 @@
 
     $scope.editPostById = function(id){
         spinner.start();
-        postServices.EditPostById(id,$scope.contentToChange)
+        postServices.editPostById(id,$scope.contentToChange)
             .then(function (data) {
             }, function (error) {
                 console.log(error);
@@ -92,7 +117,7 @@
 
     $scope.showUser = function(name) {
         spinner.start();
-        postServices.SearchByName(name)
+        postServices.searchByName(name)
             .then(function (data) {
                console.log(data);
             }, function (error) {
@@ -105,7 +130,7 @@
 
     $scope.likePost = function (post) {
         spinner.start();
-        postServices.LikePost(post.id)
+        postServices.likePost(post.id)
             .then(function (data) {
                 post.liked = true;
                 post.likesCount++;
@@ -119,7 +144,7 @@
     };
     $scope.unLikePost = function (post) {
         spinner.start();
-        postServices.UnLikePost(post.id)
+        postServices.unlikePost(post.id)
             .then(function (data) {
                 post.liked = false;
                 post.likesCount--;

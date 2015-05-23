@@ -20,7 +20,14 @@ var FuckBook = FuckBook || {};
         }
     };
 
+    var getHeaders = function() {
+        return {
+            'Authorization': 'Bearer ' + sessionStorage['accessToken']
+        };
+    };
+
     FuckBook.showErrorMessage = showErrorMessage;
     FuckBook.showSuccessMessage = showSuccessMessage;
     FuckBook.authorizationCheck = authorizationCheck;
+    FuckBook.getHeaders = getHeaders;
 })();

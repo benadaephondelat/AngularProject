@@ -1,34 +1,34 @@
 <div ng-controller="HomePageController" ng-init="getReceivedRequests()">
     <navbar></navbar>
     <friendstable></friendstable>
-    <div id="news-feed" ng-controller="postController">
-        <h1>News Feed</h1>
-        <div infinite-scroll="nextPage()" infinite-scroll-distance='0'>
-            <div ng-repeat='post in newsPosts'>
-                <post></post>
-                <div ng-show="showComments">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="page-header">
-                                    <h1>
-                                        <small class="pull-right">Comments:{{post.totalCommentsCount}}</small>
-                                    </h1>
-                                </div>
-                                <div class="comments-list" ng-repeat="comment in post.comments">
-                                    <comment></comment>
-                                </div>
-                                <div ng-show="showMore">
-                                    <div class="comments-list" ng-repeat="comment in comments[post.id]" ng-if="$index > 2">
+        <div id="news-feed" ng-controller="postController">
+            <h1>News Feed</h1>
+            <div infinite-scroll="nextPage()" infinite-scroll-distance='0'>
+                <div ng-repeat='post in newsPosts'>
+                    <post></post>
+                    <div ng-show="showComments">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="page-header">
+                                        <h1>
+                                            <small class="pull-right">Comments:{{post.totalCommentsCount}}</small>
+                                        </h1>
+                                    </div>
+                                    <div class="comments-list" ng-repeat="comment in post.comments">
                                         <comment></comment>
                                     </div>
+                                    <div ng-show="showMore">
+                                        <div class="comments-list" ng-repeat="comment in comments[post.id]" ng-if="$index > 2">
+                                            <comment></comment>
+                                        </div>
+                                    </div>
+                                    <button ng-click="showMore = !showMore" value="ShowMoreComments" id="moreCommentsButton" style="margin: 10px 10px 10px 10px">Show More/Less Comments </button>
                                 </div>
-                                <button ng-click="showMore = !showMore" value="ShowMoreComments" id="moreCommentsButton" style="margin: 10px 10px 10px 10px">Show More/Less Comments </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>

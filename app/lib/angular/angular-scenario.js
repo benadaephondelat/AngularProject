@@ -9775,7 +9775,7 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 	// Otherwise expose jQuery to the global object as usual
 	window.jQuery = window.$ = jQuery;
 
-	// Register as a named AMD module, since jQuery can be concatenated with other
+	// register as a named AMD module, since jQuery can be concatenated with other
 	// files that may use define, but not via a proper concatenation script that
 	// understands anonymous AMD modules. A named AMD is safest and most robust
 	// way to register. Lowercase jquery is used because AMD module names are
@@ -13110,7 +13110,7 @@ function annotate(fn) {
  * @name $provide#provider
  * @description
  *
- * Register a **provider function** with the {@link auto.$injector $injector}. Provider functions
+ * register a **provider function** with the {@link auto.$injector $injector}. Provider functions
  * are constructor functions, whose instances are responsible for "providing" a factory for a
  * service.
  *
@@ -13174,7 +13174,7 @@ function annotate(fn) {
  *    var postSpy;
  *
  *    beforeEach(module(function($provide) {
- *      // Register the eventTracker provider
+ *      // register the eventTracker provider
  *      $provide.provider('eventTracker', EventTrackerProvider);
  *    }));
  *
@@ -13206,7 +13206,7 @@ function annotate(fn) {
  * @name $provide#factory
  * @description
  *
- * Register a **service factory**, which will be called to return the service instance.
+ * register a **service factory**, which will be called to return the service instance.
  * This is short for registering a service where its provider consists of only a `$get` property,
  * which is the given service factory function.
  * You should use {@link auto.$provide#factory $provide.factory(getFn)} if you do not need to
@@ -13240,7 +13240,7 @@ function annotate(fn) {
  * @name $provide#service
  * @description
  *
- * Register a **service constructor**, which will be invoked with `new` to create the service
+ * register a **service constructor**, which will be invoked with `new` to create the service
  * instance.
  * This is short for registering a service where its provider's `$get` property is the service
  * constructor function that will be used to instantiate the service instance.
@@ -13281,7 +13281,7 @@ function annotate(fn) {
  * @name $provide#value
  * @description
  *
- * Register a **value service** with the {@link auto.$injector $injector}, such as a string, a
+ * register a **value service** with the {@link auto.$injector $injector}, such as a string, a
  * number, an array, an object or a function.  This is short for registering a service where its
  * provider's `$get` property is a factory function that takes no arguments and returns the **value
  * service**.
@@ -13314,7 +13314,7 @@ function annotate(fn) {
  * @name $provide#constant
  * @description
  *
- * Register a **constant service**, such as a string, a number, an array, an object or a function,
+ * register a **constant service**, such as a string, a number, an array, an object or a function,
  * with the {@link auto.$injector $injector}. Unlike {@link auto.$provide#value value} it can be
  * injected into a module configuration function (see {@link angular.Module#config}) and it cannot
  * be overridden by an Angular {@link auto.$provide#decorator decorator}.
@@ -13342,7 +13342,7 @@ function annotate(fn) {
  * @name $provide#decorator
  * @description
  *
- * Register a **service decorator** with the {@link auto.$injector $injector}. A service decorator
+ * register a **service decorator** with the {@link auto.$injector $injector}. A service decorator
  * intercepts the creation of a service, allowing it to override or modify the behaviour of the
  * service. The object returned by the decorator may be the original service, or a new service
  * object which replaces or wraps and delegates to the original service.
@@ -14130,7 +14130,7 @@ function Browser(window, document, $log, $sniffer) {
    * @name $browser#onUrlChange
    *
    * @description
-   * Register callback function that will be called, when url changes.
+   * register callback function that will be called, when url changes.
    *
    * It's only called when the url is changed from outside of angular:
    * - user types different url into address bar
@@ -15083,7 +15083,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * @function
    *
    * @description
-   * Register a new directive with the compiler.
+   * register a new directive with the compiler.
    *
    * @param {string|Object} name Name of the directive in camel-case (i.e. <code>ngBind</code> which
    *    will match as <code>ng-bind</code>), or an object map of directives where the keys are the
@@ -18284,7 +18284,7 @@ function $IntervalProvider() {
       *       }
       *
       *       angular.module('time', [])
-      *         // Register the 'myCurrentTime' directive factory method.
+      *         // register the 'myCurrentTime' directive factory method.
       *         // We inject $interval and dateFilter service since the factory method is DI.
       *         .directive('myCurrentTime', function($interval, dateFilter) {
       *           // return the directive link function. (compile function not needed)
@@ -23716,7 +23716,7 @@ function $WindowProvider(){
  * @ngdoc method
  * @name $filterProvider#register
  * @description
- * Register filter factory function.
+ * register filter factory function.
  *
  * @param {String} name Name of the filter.
  * @param {Function} fn The filter factory function which is injectable.
@@ -25278,7 +25278,7 @@ function FormController(element, attrs, $scope, $animate) {
    * @name form.FormController#$addControl
    *
    * @description
-   * Register a control with the form.
+   * register a control with the form.
    *
    * Input elements using ngModelController do this automatically when they are linked.
    */

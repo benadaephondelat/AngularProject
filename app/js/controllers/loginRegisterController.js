@@ -2,9 +2,9 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
 
     $scope.loginUser = function () {
         spinner.start();
-        loginRegisterServices.Login($scope.loginData)
+        loginRegisterServices.login($scope.loginData)
             .then(function(data){
-                loginRegisterServices.SetCredentials(data);
+                loginRegisterServices.setCredentials(data);
                 $location.path('/home');
                 FuckBook.showSuccessMessage('Successfully logged in', notificationsService);
             }, function (error) {
@@ -17,9 +17,9 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
 
     $scope.registerUser = function () {
         spinner.start();
-        loginRegisterServices.Register($scope.registerData)
+        loginRegisterServices.register($scope.registerData)
             .then(function(data){
-                loginRegisterServices.SetCredentials(data);
+                loginRegisterServices.setCredentials(data);
                 $location.path('/home');
                 FuckBook.showSuccessMessage('Successfully registered', notificationsService);
             }, function(error) {
@@ -32,7 +32,7 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
 
     $scope.logoutUser = function() {
         spinner.start();
-        loginRegisterServices.Logout()
+        loginRegisterServices.logout()
             .then(function(data) {
                 sessionStorage.clear();
                 $location.path('#/');

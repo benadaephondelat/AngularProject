@@ -1049,7 +1049,7 @@ angular.module('ngAnimate', ['ng'])
       // Otherwise, just use W3C names, browsers not supporting them at all will just ignore them.
       // Note: Chrome implements `window.onwebkitanimationend` and doesn't implement `window.onanimationend`
       // but at the same time dispatches the `animationend` event and not `webkitAnimationEnd`.
-      // Register both events in case `window.onanimationend` is not supported because of that,
+      // register both events in case `window.onanimationend` is not supported because of that,
       // do the same for `transitionend` as Safari is likely to exhibit similar behavior.
       // Also, the only modern browser that uses vendor prefixes for transitions/keyframes is webkit
       // therefore there is no reason to test anymore for other vendor prefixes: http://caniuse.com/#search=transition
