@@ -6,7 +6,7 @@
                     <img class="[ img-circle pull-left ]" default-picture
                          ng-src="{{post.author.profileImageData}}" style="width: 75px; height: 75px"/>
                     <h3 id="postAuthor" style="font-weight: bold; text-decoration: underline"
-                        ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}}</h3>
+                        ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}} commented on {{post.wallOwner.name}}'s wall</h3>
                     <h5><span>Shared this on</span> - <span>{{post.date | date}}</span></h5>
                 </div>
                 <div class="panel-body">
