@@ -14,14 +14,16 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
 
     $scope.search = function(){
         spinner.start();
-        friendsService.searchByName($scope.search.searchTerm)
-            .then(function(data){
-                $scope.findedUsers = data;
-            }, function(error){
-                //FuckBook.showErrorMessage(error, notificationsService);
-            }).finally(function () {
-                spinner.stop();
-            });
+        if($scope.search.searchTerm) {
+            friendsService.searchByName($scope.search.searchTerm)
+                .then(function (data) {
+                    $scope.findedUsers = data;
+                }, function (error) {
+                    //FuckBook.showErrorMessage(error, notificationsService);
+                }).finally(function () {
+                    spinner.stop();
+                });
+        }
     };
 
     $scope.getUserWall = function(){
@@ -31,7 +33,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
                 $rootScope.wallOwner = data;
                 $scope.searchedUser = data;
             }, function (error) {
-                FuckBook.showErrorMessage(error, notificationsService);
+                //FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             });
