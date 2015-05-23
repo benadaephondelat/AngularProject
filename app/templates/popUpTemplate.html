@@ -10,7 +10,7 @@
         </a>
         <div ng-if="post.author.username !== username" ng-controller="HomePageController">
 
-        <!--<button ng-if="post.author.isFriend === false" type="submit" class="btn btn-lg btn-danger" ng-click="sendFriendRequest(post.author.username)">Invite</button>-->
+        <button ng-if="post.author.isFriend === false" type="submit" class="btn btn-lg btn-danger" ng-click="sendFriendRequest(post.author.username)">Invite</button>
         <button ng-if="post.author.isFriend === true" class="btn btn-lg btn-success" disabled>Friend</button>
         <button ng-if="post.author.hasPendingRequest=== true" class="btn btn-lg btn-warning" disabled>Pending</button>
         </div>
