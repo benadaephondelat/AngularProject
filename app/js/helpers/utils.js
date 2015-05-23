@@ -15,7 +15,7 @@ var FuckBook = FuckBook || {};
     };
 
     var authorizationCheck = function(location) {
-        if(!sessionStorage.getItem('accessToken')){
+        if (!sessionStorage.getItem('accessToken')) {
             location.path('/');
         }
     };

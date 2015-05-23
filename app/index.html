@@ -10,6 +10,7 @@
 <body ng-app="FuckBook">
 <div class="container">
     <div ng-view></div>
+    <span us-spinner="{radius:30, width:10, length: 15}" spinner-key="spinner"></span>
 </div>
 
 <!--libraries-->
@@ -23,6 +24,7 @@
 <script type="text/javascript" src="lib/ng-infinite-scroll.js"></script>
 <script type="text/javascript" src="lib/angular/angular-spinner.min.js"></script>
 <script type="text/javascript" src="lib/jquery.noty.packaged.min.js"></script>
+<script type="text/javascript" src="lib/spin.js"></script>
 <!--end of libraries-->
 
 <!--js-->
@@ -32,6 +34,7 @@
 <script src="js/services/friendsService.js"></script>
 <script src="js/services/postService.js"></script>
 <script src="js/services/notificationService.js"></script>
+<script src="js/services/spinnerService.js"></script>
 <script src="js/controllers/loginRegisterController.js"></script>
 <script src="js/controllers/editProfileController.js"></script>
 <script src="js/controllers/homePageController.js"></script>
