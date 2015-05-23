@@ -18,7 +18,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
             .then(function(data){
                 $scope.findedUsers = data;
             }, function(error){
-                FuckBook.showErrorMessage(error, notificationsService);
+                //FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             });

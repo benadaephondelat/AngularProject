@@ -3,7 +3,6 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
 
     $scope.getReceivedRequests = function(){
         spinner.start();
-
         friendsService.getReceivedRequests()
             .then(function (data) {
                 $scope.watingRequests = data;
@@ -50,4 +49,5 @@ FuckBook.controller('HomePageController', function ($scope, loginRegisterService
                 spinner.stop();
             });
     };
+
 });
