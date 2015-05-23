@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="[ col-xs-12 col-sm-offset-1 col-sm-5 ]">
+            <div class="[ panel panel-default ] panel-google-plus">
+                <div class="panel-heading">
+                    <img class="[ img-circle pull-left ]" default-picture
+                         ng-src="{{post.author.profileImageData}}" style="width: 75px; height: 75px"/>
+                    <h3 id="postAuthor" style="font-weight: bold; text-decoration: underline"
+                        ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}}</h3>
+                    <h5><span>Shared this on</span> - <span>{{post.date | date}}</span></h5>
+                </div>
+                <div class="panel-body">
+                    <p>{{post.postContent}}</p>
+                </div>
+                <div class="panel-footer">
+                    <a ng-if="!post.liked" id="likePost" ng-click="likePost(post)"
+                       class="[glyphicon glyphicon-hand-right]">
+                        <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+                        <span class="badge">{{post.likesCount}}</span>
+                    </a>
+                    <a ng-if="post.liked" id="unlikePost" ng-click="unLikePost(post)"
+                       class="[glyphicon glyphicon-hand-right]">
+                        <span class="glyphicon glyphicon-thumbs-down"></span><span>Unlike</span>
+                        <span class="badge">{{post.likesCount}}</span></a>
+                    </a>
+                    <button ng-click="showComments=!showComments; getCommentByPostId(post.id)"
+                            class="[ btn btn-default ]">Comments {{post.totalCommentsCount}}
+                    </button>
+                </div>
+                <div ng-show="showComments" class="panel-google-plus-comment">
+                    <img ng-controller="EditProfileController" ng-init="getUserData()" class="img-circle" default-picture ng-src="{{editData.profileImageData}}" style="width: 75px; height: 75px" alt="User Image"/>
+                    <div ng-controller="postController" class="panel-google-plus-textarea">
+                        <form>
+                            <input ng-model="commentData.content" value="" type="text">
+                            <input ng-click="addCommentToPost(post)" type="submit"
+                                   value="Comment this post">
+                        </form>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-FuckBook.controller('postController', function ($scope, postServices, notificationsService, spinner) {
+    FuckBook.controller('postController', function ($scope, postServices, notificationsService, spinner) {
     $scope.username = sessionStorage['username'];
     $scope.startPostId = "";
     $scope.newsPosts = [];

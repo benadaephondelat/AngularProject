@@ -1,0 +1,16 @@
+<div class="media">
+    <p class="pull-right"><small>{{comment.date | date}}</small></p>
+    <a class="media-left">
+        <img default-picture ng-src="{{comment.author.profileImageData}}" ng-click="redirectToUsersPage(comment.author.username)" style="width: 70px;height: 70px">
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading user_name">{{comments.author.name}}</h4>
+        <p>{{comment.commentContent}}</p>
+        <a ng-if="!comment.liked" id="likeComment" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">
+            <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+            <span class="badge">{{comment.likesCount}}</span></a>
+        <a ng-if="comment.liked" id="unlikeComment" ng-click="unLikeComment(post, comment)" class="[glyphicon glyphicon-thumbs-down]">
+            <span class="glyphicon glyphicon-thumbs-down"></span><span>Dislike</span>
+            <span class="badge">{{comment.likesCount}}</span></a></a>
+    </div>
+</div>
