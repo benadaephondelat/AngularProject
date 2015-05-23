@@ -3,14 +3,14 @@
         <div class="[ col-xs-12 col-sm-offset-1 col-sm-5 ]">
             <div class="[ panel panel-default ] panel-google-plus">
                 <div class="panel-heading">
-                    <img class="[ img-circle pull-left ]" default-picture
+                    <img popup-show="templates/popUpTemplate.html" popup-placement="right" class="[ img-circle pull-left ]" default-picture
                          ng-src="{{post.author.profileImageData}}" style="width: 75px; height: 75px"/>
                     <h3 id="postAuthor" style="font-weight: bold; text-decoration: underline"
                         ng-click="redirectToUsersPage(post.author.username)">{{post.author.name}} commented on {{post.wallOwner.name}}'s wall</h3>
                     <h5><span>Shared this on</span> - <span>{{post.date | date}}</span></h5>
                 </div>
                 <div class="panel-body">
-                    <p>{{post.postContent}}</p>
+                    <p id="postContents">{{post.postContent}}</p>
                 </div>
                 <div class="panel-footer">
                     <span ng-if="!((post.author.isFriend === false) && (post.wallOwner.isFriend === false))">

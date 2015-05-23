@@ -10,7 +10,7 @@
         </div>
         <ul ng-repeat="friend in myFriends | filter:input" class="media-list">
             <img default-picture ng-src="{{friend.profileImageData}}" alt="profile picture" style="width: 150px; height: 150px"/>
-            <a id="myFriendUsername" ng-click="redirectToUsersPage(friend.username)"><span>{{friend.name}}</span></a>
+            <a id="myFriendUsername" ng-click="redirectToUsersPage(friend.username)"><span id="myFriendUsernameTwo">{{friend.name}}</span></a>
         </ul>
     </div>
 </main>

@@ -110,3 +110,16 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
 #submitPost {
     width: 25%;
 }
+
+#postContents, #postAuthor, #friendUsername, #searchResultTwo, #myFriendUsernameTwo {
+    width: 50%
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.fb-profile-text {
+    width: 50%
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+}
