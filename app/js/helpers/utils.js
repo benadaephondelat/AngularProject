@@ -14,9 +14,9 @@ var FuckBook = FuckBook || {};
         notificationsService.success(message);
     };
 
-    var authorizationCheck = function(location) {
+    var authorizationCheck = function($location) {
         if (!sessionStorage.getItem('accessToken')) {
-            location.path('/');
+            $location.path('/');
         }
     };
 

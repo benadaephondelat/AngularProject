@@ -1,7 +1,6 @@
 var FuckBook = angular.module('FuckBook', ['ngRoute', 'customFilters', 'infinite-scroll', 'angularSpinner', 'rt.popup']);
 
 FuckBook.config(function ($routeProvider) {
-
     $routeProvider
         .when('/register', {
             templateUrl: 'templates/register.html',
@@ -42,6 +41,10 @@ FuckBook.config(function ($routeProvider) {
             }
         })
         .otherwise({redirectTo: '/'})
-}).run(function($location) {
-    FuckBook.authorizationCheck($location);
+}).run(function ($rootScope,$location) {
+        $rootScope.$on('$locationChangeStart', function () {
+            if($location.path().indexOf('register') === -1 && $location.path().indexOf('login') === -1) {
+                FuckBook.authorizationCheck($location);
+            }
+        });
 });
