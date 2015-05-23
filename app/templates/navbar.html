@@ -26,6 +26,7 @@
             <li><a href="#/editProfile">Edit Profile</a></li>
             <li><a href="#/changePassword">Change Password</a></li>
             <li id="logout" ng-controller="LoginRegisterController"><a ng-click="logoutUser()">Logout</a></li>
+            <li id="wall" ng-if="username"><a ng-click="redirectToUsersPage(username)">Wellcome {{username}}</a></li>
         </ul>
     </div>
 </nav>

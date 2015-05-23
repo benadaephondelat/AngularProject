@@ -91,7 +91,7 @@ body > div > div > userwall > div > div.fb-profile > div.fb-image-lg{
     cursor: pointer;
 }
 
-#likePost, #unlikePost, #likeComment, #unlikeComment, #myFriendUsername, #friendsOfFriendUsername, #friendWallFriends, #friendUsername, #logout, #postAuthor, #searchResult {
+#likePost, #unlikePost, #wall, #likeComment, #unlikeComment, #myFriendUsername, #friendsOfFriendUsername, #friendWallFriends, #friendUsername, #logout, #postAuthor, #searchResult {
     cursor: pointer;
 }
 
