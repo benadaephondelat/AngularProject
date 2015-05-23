@@ -9,7 +9,6 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
                 FuckBook.showSuccessMessage('Successfully logged in', notificationsService);
             }, function (error) {
                 FuckBook.showErrorMessage(error, notificationsService);
-                console.log(error);
             }).finally(function () {
                 spinner.stop();
             });
@@ -24,7 +23,6 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
                 FuckBook.showSuccessMessage('Successfully registered', notificationsService);
             }, function(error) {
                 FuckBook.showErrorMessage(error, notificationsService);
-                console.log(error);
             }).finally(function () {
                 spinner.stop();
             });
@@ -38,7 +36,6 @@ FuckBook.controller("LoginRegisterController", function ($scope, $location, logi
                 $location.path('#/');
                 FuckBook.showSuccessMessage('Goodbye!', notificationsService);
             }, function(error) {
-                console.log(error);
                 FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();

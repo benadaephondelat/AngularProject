@@ -43,6 +43,5 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
         sessionStorage['username'] = data.userName;
     };
 
-
     return service;
 });

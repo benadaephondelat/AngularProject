@@ -6,7 +6,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
             .then(function (data) {
                 $scope.myFriends = data;
             }, function(error) {
-                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             });
@@ -16,10 +16,9 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
         spinner.start();
         friendsService.searchByName($scope.search.searchTerm)
             .then(function(data){
-                console.log(data);
                 $scope.findedUsers = data;
             }, function(error){
-                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             });
@@ -31,7 +30,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
             .then(function(data){
                 $scope.searchedUser = data;
             }, function (error) {
-                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             });
@@ -43,7 +42,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
             .then(function (data) {
                 $scope.myFriends = data;
             }, function(error){
-                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             })
@@ -52,7 +51,6 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
     $scope.redirectToUsersPage = function(username){
         $scope.searchedUser  = username;
         sessionStorage['searchedUser'] = username;
-        console.log($scope);
         $location.path('/users/' + username);
     };
 
@@ -62,7 +60,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
             .then(function(data) {
                 $scope.hisFriends = data;
             }, function(error) {
-                console.log(error);
+                FuckBook.showErrorMessage(error, notificationsService);
             }).finally(function () {
                 spinner.stop();
             })

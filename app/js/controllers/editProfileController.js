@@ -7,7 +7,6 @@ FuckBook.controller("EditProfileController", function ($scope, $location, editPr
                FuckBook.showSuccessMessage('Password successfully changed!', notificationsService);
             }, function(error) {
                 FuckBook.showErrorMessage(error, notificationsService);
-                console.log(error);
             }).finally(function () {
                 spinner.stop();
             });
@@ -19,7 +18,7 @@ FuckBook.controller("EditProfileController", function ($scope, $location, editPr
             .then(function(data) {
                 $scope.editData = data;
             }, function (error) {
-                console.log(error);
+
             }).finally(function () {
                 spinner.stop();
             });
@@ -32,7 +31,6 @@ FuckBook.controller("EditProfileController", function ($scope, $location, editPr
                 FuckBook.showSuccessMessage('Profile successfully edited.', notificationsService);
             }, function (error) {
                 FuckBook.showErrorMessage(error, notificationsService);
-                console.log(error);
             }).finally(function () {
                 spinner.stop();
             });
