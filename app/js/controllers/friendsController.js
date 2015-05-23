@@ -1,4 +1,4 @@
-FuckBook.controller("FriendsController", function ($scope, $location, $routeParams, friendsService, spinner) {
+FuckBook.controller("FriendsController", function ($scope, $location, $routeParams, $rootScope, notificationsService, friendsService, spinner) {
 
     $scope.loadFriends = function() {
         spinner.start();
@@ -28,6 +28,7 @@ FuckBook.controller("FriendsController", function ($scope, $location, $routePara
         spinner.start();
         friendsService.getUserWall(sessionStorage['searchedUser'])
             .then(function(data){
+                $rootScope.wallOwner = data;
                 $scope.searchedUser = data;
             }, function (error) {
                 FuckBook.showErrorMessage(error, notificationsService);

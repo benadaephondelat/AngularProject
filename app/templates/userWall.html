@@ -1,18 +1,22 @@
 <navbar></navbar>
 <userwall></userwall>
-<div ng-controller="FriendsController" ng-init="showFriendsOfFriend(sessionStorage['searchedUser'])" id="friendsPanel" class="row">
-    <a href="{{'#/users/' + searchedUser.username + '/friends'}}">Friends total {{hisFriends.length}}</a>
-    <div class="col-xs-6 col-md-3" ng-repeat="friend in hisFriends | limitTo: 6">
-        <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px" alt=""/>
-        <a><span id="friendWallFriends" ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
+<span ng-if="wallOwner.isFriend">
+    <div ng-controller="FriendsController" ng-init="showFriendsOfFriend(sessionStorage['searchedUser'])" id="friendsPanel" class="row">
+        <a href="{{'#/users/' + searchedUser.username + '/friends'}}">Friends total {{hisFriends.length}}</a>
+        <div class="col-xs-6 col-md-3" ng-repeat="friend in hisFriends | limitTo: 6">
+            <img class="thumbnail" default-picture ng-src="{{friend.profileImageData}}" style="width: 75px; height: 75px" alt=""/>
+            <a><span id="friendWallFriends" ng-click="redirectToUsersPage(friend.username)" class="my-firends-username">{{friend.name}}</span></a>
+        </div>
     </div>
-</div>
+</span>
 
 <div id="news-feed" ng-controller="postController">
-    <form id="submitPost" ng-submit="addPost()">
-        <input id="addPostToFried" class="form-control" ng-model="postFriendData" type="text" placeholder="Add post"/>
-        <input class="btn btn-lg btn-warning" type="submit" value="POST"/>
-    </form>
+
+        <form id="submitPost" ng-submit="addPost()">
+            <input id="addPostToFried" class="form-control" ng-model="postFriendData" type="text" placeholder="Add post"/>
+            <input class="btn btn-lg btn-warning" type="submit" value="POST"/>
+        </form>
+
 
     <h1>News Feed</h1>
     <div infinite-scroll="nextPageUser()" infinite-scroll-distance='2'>

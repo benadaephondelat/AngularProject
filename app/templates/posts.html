@@ -13,23 +13,25 @@
                     <p>{{post.postContent}}</p>
                 </div>
                 <div class="panel-footer">
-                    <a ng-if="!post.liked" id="likePost" ng-click="likePost(post)"
-                       class="[glyphicon glyphicon-hand-right]">
-                        <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
-                        <span class="badge">{{post.likesCount}}</span>
-                    </a>
-                    <a ng-if="post.liked" id="unlikePost" ng-click="unLikePost(post)"
-                       class="[glyphicon glyphicon-hand-right]">
-                        <span class="glyphicon glyphicon-thumbs-down"></span><span>Unlike</span>
-                        <span class="badge">{{post.likesCount}}</span></a>
-                    </a>
+                    <span ng-if="!((post.author.isFriend === false) && (post.wallOwner.isFriend === false))">
+                        <a ng-if="!post.liked" id="likePost" ng-click="likePost(post)"
+                           class="[glyphicon glyphicon-hand-right]">
+                            <span class="glyphicon glyphicon-thumbs-up"></span><span>Like</span>
+                            <span class="badge">{{post.likesCount}}</span>
+                        </a>
+                        <a ng-if="post.liked" id="unlikePost" ng-click="unLikePost(post)"
+                           class="[glyphicon glyphicon-hand-right]">
+                            <span class="glyphicon glyphicon-thumbs-down"></span><span>Unlike</span>
+                            <span class="badge">{{post.likesCount}}</span></a>
+                        </a>
+                    </span>
                     <button ng-click="showComments=!showComments; getCommentByPostId(post.id)"
                             class="[ btn btn-default ]">Comments {{post.totalCommentsCount}}
                     </button>
                 </div>
-                <div ng-show="showComments" class="panel-google-plus-comment">
+                <div ng-if="!((post.author.isFriend === false) && (post.wallOwner.isFriend === false))"  ng-show="showComments" class="panel-google-plus-comment">
                     <img ng-controller="EditProfileController" ng-init="getUserData()" class="img-circle" default-picture ng-src="{{editData.profileImageData}}" style="width: 75px; height: 75px" alt="User Image"/>
-                    <div ng-controller="postController" class="panel-google-plus-textarea">
+                    <div  ng-controller="postController" class="panel-google-plus-textarea">
                         <form>
                             <input ng-model="commentData.content" value="" type="text">
                             <input ng-click="addCommentToPost(post)" type="submit"
