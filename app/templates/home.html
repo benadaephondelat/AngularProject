@@ -3,7 +3,7 @@
     <friendstable></friendstable>
         <div id="news-feed" ng-controller="postController">
             <h1>News Feed</h1>
-            <div infinite-scroll="nextPage()" infinite-scroll-distance='0'>
+            <div infinite-scroll="nextPage()" infinite-scroll-distance='2'>
                 <div ng-repeat='post in newsPosts'>
                     <post></post>
                     <div ng-show="showComments">
