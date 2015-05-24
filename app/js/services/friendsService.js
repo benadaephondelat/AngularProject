@@ -4,7 +4,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.getFriends = function () {
         var defer = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get(serviceUrl)
             .success(function (data) {
                 defer.resolve(data);
@@ -16,7 +15,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.searchByName = function (search) {
         var deferred = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/search?searchTerm=" + search)
             .success(function (data) {
                 deferred.resolve(data);
@@ -28,7 +26,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.getUserWall = function (userName) {
         var deferred = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/" + userName)
             .success(function (data) {
                 sessionStorage['currentUser'] = data.username;
@@ -41,7 +38,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.getMyFriends = function () {
         var deferred = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/me/friends")
             .success(function (data) {
                 deferred.resolve(data);
@@ -53,7 +49,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.getReceivedRequests = function () {
         var deferred = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/me/requests")
             .success(function (data) {
                 deferred.resolve(data);
@@ -98,7 +93,6 @@ FuckBook.factory('friendsService', function ($http, $q) {
 
     service.getFriendsOfFriend = function(username) {
         var deferred = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/" + username + "/friends")
             .success(function(data) {
                 deferred.resolve(data);

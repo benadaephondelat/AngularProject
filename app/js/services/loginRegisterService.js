@@ -26,7 +26,6 @@ FuckBook.factory('loginRegisterServices', function ($http, $q) {
 
     service.logout = function () {
         var defer = $q.defer();
-        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.post(serviceUrl + "logout")
             .success(function (data) {
                 sessionStorage.clear();
