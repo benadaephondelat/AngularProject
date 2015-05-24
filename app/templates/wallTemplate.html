@@ -4,6 +4,7 @@
         <img align="left" class="fb-image-profile thumbnail"  default-picture ng-src="{{searchedUser.profileImageData}}" alt="profile image"/>
         <div class="fb-profile-text">
             <h3>{{searchedUser.name}}</h3>
+            <p>{{searchedUser.gender | genderFilter}}</p>
             <button ng-click="sendFriendRequest(searchedUser.username)" ng-show="searchedUser.isFriend === false && searchedUser.hasPendingRequest === false" type="button" class="btn btn-primary active" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add Friend</button>
             <button  disabled ng-show="searchedUser.isFriend ===  false && searchedUser.hasPendingRequest===true" type="button" class="btn btn-primary active" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Pending request</button>
             <a class="btn btn-primary active" ng-show="searchedUser.isFriend===true">Friends</a>

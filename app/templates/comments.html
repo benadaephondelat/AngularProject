@@ -5,6 +5,7 @@
     </a>
     <div class="media-body">
         <h4 class="media-heading user_name">{{comments.author.name}}</h4>
+        <p>{{comment.author.gender | genderFilter}}</p>
         <p>{{comment.commentContent}}</p>
         <span ng-if="!((post.author.isFriend === false) && (post.wallOwner.isFriend === false))">
         <a ng-if="!comment.liked" id="likeComment" ng-click="likeComment(post, comment)" class="[glyphicon glyphicon-hand-right]">

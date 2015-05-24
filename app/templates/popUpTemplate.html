@@ -1,6 +1,7 @@
 <div ng-cloak>
     <span class="button-custom" ng-click="hideUserPreview();hidePopover();" class="preview-close glyphicon glyphicon-remove"></span>
     <p>{{post.author.name}}</p>
+    <p>{{post.author.gender | genderFilter}}</p>
     <div>
         <img ng-src="{{post.author.profileImageData}}" alt="profile picture" style="width: 150px; height: 150px"/>
     </div>
