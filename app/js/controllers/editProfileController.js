@@ -1,5 +1,6 @@
-FuckBook.controller("EditProfileController", function ($scope, $location, editProfileService, notificationsService, spinner) {
+FuckBook.controller("EditProfileController", function ($scope, $location, $http, spinner, editProfileService, notificationsService) {
 
+    $http.defaults.headers.common = FuckBook.getHeaders();
     $scope.changePassword = function () {
         spinner.start();
         editProfileService.changePassword($scope.changePasswordData)

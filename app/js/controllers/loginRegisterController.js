@@ -1,4 +1,5 @@
-FuckBook.controller("LoginRegisterController", function ($scope, $location, loginRegisterServices, notificationsService, spinner) {
+FuckBook.controller("LoginRegisterController", function ($scope, $location, $http, loginRegisterServices, notificationsService, spinner) {
+    $http.defaults.headers.common = FuckBook.getHeaders();
 
     $scope.loginUser = function () {
         spinner.start();

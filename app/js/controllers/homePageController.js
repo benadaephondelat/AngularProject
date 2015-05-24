@@ -1,5 +1,6 @@
-FuckBook.controller('HomePageController', function ($scope, loginRegisterServices, friendsService, notificationsService, spinner) {
+FuckBook.controller('HomePageController', function ($scope, $http, loginRegisterServices, friendsService, notificationsService, spinner) {
     $scope.username = sessionStorage['username'];
+    $http.defaults.headers.common = FuckBook.getHeaders();
 
     $scope.getReceivedRequests = function(){
         spinner.start();

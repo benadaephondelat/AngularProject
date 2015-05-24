@@ -1,10 +1,11 @@
-FuckBook.controller('postController', function ($scope, $routeParams,  postServices, notificationsService, spinner) {
+FuckBook.controller('postController', function ($scope, $routeParams, $http,  postServices, notificationsService, spinner) {
     $scope.username = sessionStorage['username'];
     $scope.startPostId = "";
     $scope.newsPosts = [];
     $scope.usernewsPosts = [];
     $scope.isBusy = false;
     $scope.comments = [];
+    $http.defaults.headers.common = FuckBook.getHeaders();
 
     $scope.addPost = function () {
         spinner.start();

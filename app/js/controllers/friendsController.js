@@ -1,5 +1,6 @@
-FuckBook.controller("FriendsController", function ($scope, $location, $routeParams, $rootScope, notificationsService, friendsService, spinner) {
+FuckBook.controller("FriendsController", function ($scope, $location, $routeParams, $rootScope, $http, notificationsService, friendsService, spinner) {
 
+    $http.defaults.headers.common = FuckBook.getHeaders();
     $scope.loadFriends = function() {
         spinner.start();
         friendsService.getFriends()
