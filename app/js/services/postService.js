@@ -72,6 +72,7 @@ FuckBook.factory('postServices', function ($http, $q) {
 
     service.searchByName = function (search) {
         var deferred = $q.defer();
+        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get("http://softuni-social-network.azurewebsites.net/api/users/search?searchTerm=" + search)
             .success(function (data) {
                 deferred.resolve(data);

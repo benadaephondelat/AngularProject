@@ -4,6 +4,7 @@ FuckBook.factory('editProfileService', function ($http, $q) {
 
     service.changePassword = function (changePasswordData) {
         var defer = $q.defer();
+        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.put(serviceUrl + "/changepassword", changePasswordData)
             .success(function (data) {
                 defer.resolve(data);
@@ -15,6 +16,7 @@ FuckBook.factory('editProfileService', function ($http, $q) {
 
     service.getUserData = function() {
         var defer = $q.defer();
+        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.get(serviceUrl)
             .success(function (data) {
                 defer.resolve(data);
@@ -26,6 +28,7 @@ FuckBook.factory('editProfileService', function ($http, $q) {
 
     service.editProfile = function(data) {
         var defer = $q.defer();
+        $http.defaults.headers.common = FuckBook.getHeaders();
         $http.put(serviceUrl, data)
             .success(function (data) {
                 defer.resolve(data);
